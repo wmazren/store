@@ -24,9 +24,6 @@
               <%= f.input :email, :disabled => true %>
               <%= f.input :role, :collection => [ "Super User", "Admin", "User" ] %>
               <%= f.input :active %>
-              <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-                                <%= f.input :password_confirmation, :required => false %>
-                                <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
             </div>
 
             <div class="tab-pane" id="address">
@@ -36,6 +33,11 @@
               <%= f.input :town, :required => true %>
               <%= f.input :postcode, :required => true %>
               <%= f.input :state, :required => true %>
+              <%= f.input :phone1, :required => true %>
+              <%= f.input :phone2, :required => true %>
+              <%= f.input :phone3, :required => true %>
+              <%= f.input :fax, :required => true %>
+              <%= f.input :mobile, :required => true %>
             </div>
           </div>
         </div>

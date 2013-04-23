@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+    #redirect_to :back, :alert => exception.message
+    # redirect_to(request.env["HTTP_REFERER"]), :alert => exception.message
   end
 
   # redirect to a specific page on successful sign in

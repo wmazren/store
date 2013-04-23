@@ -54,10 +54,12 @@
           <%= @user.address1 %><br>
           <%= @user.address2 %><br>
           <%= @user.postcode %>, <%= @user.town %><br>
-          <%= @user.state %><br>
-          <abbr title="Phone">P:</abbr> (123) 456-7890<br>
-          <abbr title="Fax">F:</abbr> (123) 456-7890<br>
-          <abbr title="Mobile">M:</abbr> (123) 456-7890
+          <%= @user.state %><br><br>
+          <abbr title="Phone#1">Phone#1:</abbr> <%= @user.phone1 %><br>
+          <abbr title="Phone#2">Phone#2:</abbr> <%= @user.phone2 %><br>
+          <abbr title="Phone#3">Phone#3:</abbr> <%= @user.phone3 %><br>
+          <abbr title="Fax">Fax:</abbr> <%= @user.fax %><br>
+          <abbr title="Mobile">Mobile:</abbr> <%= @user.mobile %>
         </address>
 
         <address>

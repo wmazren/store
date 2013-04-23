@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419085802) do
+ActiveRecord::Schema.define(:version => 20130423193317) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",   :null => false
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(:version => 20130419085802) do
     t.string   "town"
     t.string   "postcode"
     t.string   "state"
+    t.string   "phone1"
+    t.string   "phone2"
+    t.string   "phone3"
+    t.string   "fax"
+    t.string   "mobile"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
