@@ -1,17 +1,59 @@
 <%= simple_form_for(@user, :html => { :class => 'form-horizontal' }) do |f| %>
-  <div class="inputs">
-    <%= f.input :full_name, :required => true, :autofocus => true %>
-    <%= f.input :email, :required => true %>
-    <%= f.input :business_unit, :required => true %>
-    <%= f.input :role, :required => true, :collection => [ "Super User", "Admin", "User" ], :selected => "member" %>
-    <%= f.input :active, :required => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
+<div class="row">
+  <div class="span8">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-edit"></i>
+        <h3>Add New User</h3>
+      </div> <!-- /widget-header -->
 
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
-  </div>
+      <div class="widget-content">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#account_details" data-toggle="tab">Account Details</a>
+            </li>
+            <li><a href="#address" data-toggle="tab">Address</a></li>
+          </ul>
+
+          <br>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="account_details">
+              <%= f.input :full_name, :required => true, :autofocus => true %>
+              <%= f.input :email, :required => true %>
+              <%= f.input :role, :required => true, :collection => [ "Super User", "Admin", "User" ], :selected => "User" %>
+              <%= f.input :active %>
+              <%= f.input :password, :required => true %>
+              <%= f.input :password_confirmation, :required => true %>
+            </div>
+
+            <div class="tab-pane" id="address">
+              <%= f.input :business_unit, :required => true %>
+              <%= f.input :address1, :required => true %>
+              <%= f.input :address2, :required => true %>
+              <%= f.input :town, :required => true %>
+              <%= f.input :postcode, :required => true %>
+              <%= f.input :state, :required => true %>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span8 -->
+
+  <div class="span4">
+    <div class="widget stacked widget-box">
+      <div class="widget-header">
+        <i class="icon-ok"></i>
+        <h3>Actions</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+          <%= f.button :submit, :class => 'btn-primary' %>
+          <%= link_to 'Cancel', action: :index, :class => 'btn' %>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget-box -->
+  </div> <!-- /span4 -->
+</div> <!-- /row -->
 <% end %>

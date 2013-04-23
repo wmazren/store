@@ -3,7 +3,7 @@ class AddDetailsToUsers < ActiveRecord::Migration
     add_column :users, :full_name, :string
     add_column :users, :business_unit, :string
     add_column :users, :role, :string
-    add_column :users, :active, :boolean
+    add_column :users, :active, :boolean, :null => false, :default => true
     add_column :users, :address1, :string
     add_column :users, :address2, :string
     add_column :users, :town, :string

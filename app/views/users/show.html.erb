@@ -1,29 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="span8">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-user"></i>
+        <h3><%= @user.full_name %></h3>
+      </div> <!-- /widget-header -->
 
-<p>
-  <b>Full Name:</b>
-  <%= @user.full_name %>
-</p>
+      <div class="widget-content">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#account_details" data-toggle="tab">Account Details</a>
+            </li>
+            <li><a href="#history" data-toggle="tab">History</a></li>
+          </ul>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+          <br>
 
-<p>
-  <b>Business Unit:</b>
-  <%= @user.business_unit %>
-</p>
+          <div class="tab-content">
+            <div class="tab-pane active" id="account_details">
+              <p><b>Full Name: </b><%= @user.full_name %></p>
+              <p><b>Email: </b><%= @user.email %></p>
+              <p><b>Business Unit: </b><%= @user.business_unit %></p>
+              <p><b>Role: </b><%= @user.role %></p>
+              <p><b>Active: </b><%= @user.active %></p>
 
-<p>
-  <b>Role:</b>
-  <%= @user.role %>
-</p>
+              <%= link_to 'Edit', edit_user_path(@user) %> |
+              <%= link_to 'Back', users_path %>
+            </div>
 
-<p>
-  <b>Active:</b>
-  <%= @user.active %>
-</p>
+            <div class="tab-pane" id="history">
+              <p><b>Created At: </b><%= @user.created_at.to_s(:datetime).humanize %></p>
+              <p><b>Last Edited At: </b><%= @user.updated_at.to_s(:datetime).humanize %></p>
+              <p><b>Login Count: </b><%= @user.sign_in_count %></p>
+              <p><b>Last Sign In At: </b><%if @user.last_sign_in_at.blank? %>Never logged in<% else %><%= time_ago_in_words(@user.last_sign_in_at.to_datetime)+' ago' %><% end %></p>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span8 -->
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <div class="span4">
+    <div class="widget stacked widget-box">
+      <div class="widget-header">
+        <i class="icon-truck"></i>
+        <h3>Address</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+        <address>
+          <strong><%= @user.business_unit %></strong><br>
+          <%= @user.address1 %><br>
+          <%= @user.address2 %><br>
+          <%= @user.postcode %>, <%= @user.town %><br>
+          <%= @user.state %><br>
+          <abbr title="Phone">P:</abbr> (123) 456-7890<br>
+          <abbr title="Fax">F:</abbr> (123) 456-7890<br>
+          <abbr title="Mobile">M:</abbr> (123) 456-7890
+        </address>
+
+        <address>
+          <strong>Email</strong><br>
+          <a href="mailto:#"><%= @user.email %></a>
+        </address>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget-box -->
+  </div> <!-- /span4 -->
+</div> <!-- /row -->
