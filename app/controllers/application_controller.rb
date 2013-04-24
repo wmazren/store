@@ -1,15 +1,20 @@
 class ApplicationController < ActionController::Base
+  before_filter :set_timezone
+
+  def set_timezone
+    # current_user.time_zone #=> 'Central Time (US & Canada)'
+    Time.zone = 'Kuala Lumpur'
+  end
+
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
-    #redirect_to :back, :alert => exception.message
-    # redirect_to(request.env["HTTP_REFERER"]), :alert => exception.message
   end
 
   # redirect to a specific page on successful sign in
   def after_sign_in_path_for(resource)
-    return request.env['omniauth.origin'] || stored_location_for(resource) || users_path
+    return request.env['omniauth.origin'] || stored_location_for(resource) || dashboards_path
   end
 
   # Overwriting the devise sign_out redirect path method
