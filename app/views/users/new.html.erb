@@ -22,24 +22,30 @@
             <div class="tab-pane active" id="account_details">
               <%= f.input :full_name, :required => true, :autofocus => true %>
               <%= f.input :email, :required => true %>
-              <%= f.input :role, :required => true, :collection => [ "Super User", "Admin", "User" ], :selected => "User" %>
-              <%= f.input :active %>
+              <% if current_user.role == "Super User" %>
+                <%= f.input :role, :collection => [ "Super User", "Admin", "User" ], :selected => "User" %>
+              <% end %>
+              <% if current_user.role == "Admin" %>
+                <%= f.input :role, :collection => [ "User" ], :selected => "User" %>
+              <% end %>
+              <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons %>
+              <%= f.hidden_field :active, :value => 1 %>
               <%= f.input :password, :required => true %>
               <%= f.input :password_confirmation, :required => true %>
             </div>
 
             <div class="tab-pane" id="address">
-              <%= f.input :business_unit, :required => true %>
-              <%= f.input :address1, :required => true %>
-              <%= f.input :address2, :required => true %>
-              <%= f.input :town, :required => true %>
-              <%= f.input :postcode, :required => true %>
-              <%= f.input :state, :required => true %>
-              <%= f.input :phone1, :required => true %>
-              <%= f.input :phone2, :required => true %>
-              <%= f.input :phone3, :required => true %>
-              <%= f.input :fax, :required => true %>
-              <%= f.input :mobile, :required => true %>
+              <%= f.input :business_unit %>
+              <%= f.input :address1 %>
+              <%= f.input :address2 %>
+              <%= f.input :town %>
+              <%= f.input :postcode %>
+              <%= f.input :state %>
+              <%= f.input :phone1 %>
+              <%= f.input :phone2 %>
+              <%= f.input :phone3 %>
+              <%= f.input :fax %>
+              <%= f.input :mobile %>
             </div>
           </div>
         </div>

@@ -25,8 +25,11 @@
               <p><b>Role: </b><%= @user.role %></p>
               <p><b>Active: </b><%= @user.active %></p>
 
-              <%= link_to 'Edit', edit_user_path(@user) %> |
-              <%= link_to 'Back', users_path %>
+              <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-mini btn-danger' %>
+              <% if can? :destroy, @user %>
+                <%= link_to 'Destroy', @user, :data => { :confirm => 'Are you sure?' }, method: :delete, :class => 'btn btn-mini btn-primary' %>
+              <% end %>
+              <%= link_to 'Back', users_path, :class => 'btn btn-mini' %>
             </div>
 
             <div class="tab-pane" id="history">

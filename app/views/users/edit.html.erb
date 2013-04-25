@@ -22,8 +22,13 @@
             <div class="tab-pane active" id="account_details">
               <%= f.input :full_name, :required => true, :autofocus => true %>
               <%= f.input :email, :disabled => true %>
-              <%= f.input :role, :collection => [ "Super User", "Admin", "User" ] %>
-              <%= f.input :active %>
+              <% if current_user.role == "Super User" %>
+                <%= f.input :role, :collection => [ "Super User", "Admin", "User" ] %>
+              <% end %>
+              <% if current_user.role == "Admin" %>
+                <%= f.input :role, :collection => [ "User" ] %>
+              <% end %>
+              <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons %>
             </div>
 
             <div class="tab-pane" id="address">
