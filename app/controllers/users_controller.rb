@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       flash[:notice] = "User created"
       redirect_to users_path
     else
-      redirect_to users_path, alert: 'Error creating user'
+      render :action => 'new'
     end
   end
 

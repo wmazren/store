@@ -26,9 +26,6 @@
               <% if current_user.role == "Super User" %>
                 <%= f.input :role, :collection => [ "Super User", "Admin", "User" ] %>
               <% end %>
-              <% if current_user.role == "Admin" %>
-                <%= f.input :role, :collection => [ "User" ] %>
-              <% end %>
               <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons %>
             </div>
 
