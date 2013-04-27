@@ -30,7 +30,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @users.where(:user_type => "Admin").each do |user| %>
+                <% @users.where(:user_type => "Admin").each do |user| %>
+                  <% if current_user.role == "Admin" %>
+                    <% if user.role != "Super User" %>
+                      <tr>
+                        <td><%= link_to user.full_name, user %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.business_unit %></td>
+                        <td class="td-actions">
+                          <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% else %>
                     <tr>
                       <td><%= link_to user.full_name, user %></td>
                       <td><%= user.email %></td>
@@ -40,6 +52,7 @@
                       </td>
                     </tr>
                   <% end %>
+                <% end %>
                 </tbody>
               </table>
 

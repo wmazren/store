@@ -29,7 +29,7 @@
               <% if current_user.role == "Admin" %>
                 <%= f.input :role, :collection => [ "User" ], :selected => "User" %>
               <% end %>
-              <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons %>
+              <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons, :checked => "Admin" %>
               <%= f.hidden_field :active, :value => 1 %>
               <%= f.input :password, :required => true %>
               <%= f.input :password_confirmation, :required => true %>
