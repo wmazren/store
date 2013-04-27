@@ -1,0 +1,18 @@
+<h1>Listing Storage Request</h1>
+<h2><%= @storage_request.user_id %></h2>
+<h2><%= @storage_request.due_date %></h2>
+<ul>
+  <% @storage_request.packages.each do |package| %>
+  <li>
+    <%= package.reference_id %>
+    <ol>
+      <% package.items.each do |item| %>
+        <li><%= item.name %></li>
+      <% end %>
+    </ol>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_storage_request_path(@storage_request) %> |
+<%= link_to 'Back to Storage Requests', storage_requests_path %>

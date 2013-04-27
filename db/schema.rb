@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425032005) do
+ActiveRecord::Schema.define(:version => 20130427181853) do
+
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "package_id"
+  end
+
+  create_table "packages", :force => true do |t|
+    t.string   "reference_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "storage_request_id"
+    t.integer  "user_id"
+  end
+
+  create_table "storage_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "due_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",   :null => false

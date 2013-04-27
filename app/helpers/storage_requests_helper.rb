@@ -1,0 +1,2 @@
+module StorageRequestsHelper
+end

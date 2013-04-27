@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :storage_requests
+  has_many :packages
   validates :full_name, :role, :position, :user_type, :presence => true
 
   # Include default devise modules. Others available are:

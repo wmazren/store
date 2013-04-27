@@ -1,0 +1,11 @@
+<h1>Listing All Storage Request</h1>
+
+<% @storage_requests.each do |storage_request| %>
+<div>
+<ul>
+    <li><%= link_to storage_request.user_id, storage_request %></li>
+    <li><%= storage_request.due_date %></li>
+    <li><%= pluralize(storage_request.packages.size, "Package") %></li>
+</ul>
+</div>
+<% end %>
