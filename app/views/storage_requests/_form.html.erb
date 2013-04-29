@@ -1,7 +1,7 @@
 <%= simple_form_for(@storage_request) do |f| %>
   <div class="field">
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.input :due_date %>
+    <%= f.input :due_date, :as => :datepicker, :required => true, :placeholder => "DD/MM/YYYY" %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,11 +1,38 @@
-<h1>Listing All Storage Request</h1>
-
-<% @storage_requests.each do |storage_request| %>
-<div>
-<ul>
-    <li><%= link_to storage_request.user_id, storage_request %></li>
-    <li><%= storage_request.due_date %></li>
-    <li><%= pluralize(storage_request.packages.size, "Package") %></li>
-</ul>
+<div class="row">
+  <div class="span12">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-briefcase"></i>
+        <h3>List Storage Requests</h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content">
+        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="admin_users">
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Request Due Date</th>
+              <th>Requested By</th>
+              <th>Number of Package(s)</th>
+              <th class="td-actions">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @storage_requests.each do |storage_request| %>
+            <tr>
+              <td><%= storage_request.id %></td>
+              <td><%= storage_request.due_date %></td>
+              <td><%= storage_request.user.full_name %></td>
+              <td><%= pluralize(storage_request.packages.size, "Package") %></td>
+              <td class="td-actions">
+                <%= link_to "View", storage_request_path(storage_request), :class => 'btn btn-mini btn-primary'%>
+                <%= link_to 'Destroy', storage_request, :data => { :confirm => 'Are you sure?' }, method: :delete, :class => 'btn btn-mini btn-danger' %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
+

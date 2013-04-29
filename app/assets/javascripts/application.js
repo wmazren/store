@@ -17,4 +17,3 @@
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery.ui.datepicker
 //= require_tree .
-

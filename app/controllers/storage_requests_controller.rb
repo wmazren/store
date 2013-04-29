@@ -36,6 +36,6 @@ def show
   def destroy
     @storage_request = StorageRequest.find(params[:id])
     @storage_request.destroy
-    redirect_to surveys_url, notice: "Successfully destroyed storage request."
+    redirect_to storage_requests_url, notice: "Successfully destroyed storage request."
   end
 end
