@@ -7,6 +7,10 @@
       </div> <!-- /widget-header -->
 
       <div class="widget-content">
+        <div align="right">
+          <%= link_to 'Add New User', new_user_path, :class => 'btn btn-primary' %><br><br>
+        </div>
+
         <div class="tabbable">
           <ul class="nav nav-tabs">
             <li class="active">
@@ -55,10 +59,6 @@
                 <% end %>
                 </tbody>
               </table>
-
-              <div class="form-actions">
-                <%= link_to 'Create User', new_user_path, :class => 'btn btn-primary' %>
-              </div>
             </div>
 
             <div class="tab-pane" id="hq">
