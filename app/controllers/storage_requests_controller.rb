@@ -1,4 +1,6 @@
 class StorageRequestsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
       @storage_requests = StorageRequest.all
   end
@@ -17,6 +19,7 @@ def show
       redirect_to @storage_request, notice: "Successfully created storage request."
     else
       render :new
+      #flash[:alert] = "Each storage request must have at least one package."
     end
   end
 
