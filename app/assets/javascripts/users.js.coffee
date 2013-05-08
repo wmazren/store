@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-        $('#admin_users').dataTable({
+        $('#all_users').dataTable({
           "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
           "sPaginationType": "bootstrap"
         });
@@ -13,6 +13,11 @@ jQuery ->
         });
 
         $('#branch_users').dataTable({
+          "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+          "sPaginationType": "bootstrap"
+        });
+
+        $('#admin_users').dataTable({
           "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
           "sPaginationType": "bootstrap"
         });
