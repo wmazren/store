@@ -21,7 +21,6 @@
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.input :due_date, :as => :datepicker, :required => true, :placeholder => "DD/MM/YYYY" %>
           <%= link_to_add_fields "Add Package", f, :packages %>
-          <p><p><%= f.button :submit, :class => 'btn btn-primary' %></p></p>
         </div>
       </div>
     </div>
@@ -35,14 +34,16 @@
       </div> <!-- /widget-header -->
       <div class="widget-content">
         <div id="package-container">
-          <div class="accordion" id="accordion2">
-            <%= f.fields_for :packages do |builder| %>
-              <%= render 'package_fields', f: builder %>
-            <% end %>
-          </div>
+          <%= f.fields_for :packages do |builder| %>
+            <%= render 'package_fields', f: builder %>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="actions span12">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
   </div>
 
 <% end %>
