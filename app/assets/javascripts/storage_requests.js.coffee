@@ -1,11 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 jQuery ->
  $('form').on 'click', '.remove_fields', (event) ->
    $(this).prev('input[type=hidden]').val('1')
+   # alert($(this).prev().attr("id"));
    $(this).closest('fieldset').hide()
+   event.preventDefault()
+
+ $('form').on 'click', '.add_items', (event) ->
+   time = new Date().getTime()
+   regexp = new RegExp($(this).data('id'), 'g')
+   $(this).before($(this).data('fields').replace(regexp, time))
    event.preventDefault()
 
  $('form').on 'click', '.add_fields', (event) ->
@@ -13,8 +16,7 @@ jQuery ->
    regexp = new RegExp($(this).data('id'), 'g')
    $('#accordion2').append($(this).data('fields').replace(regexp, time));
 
-
-   $('#dyn-id').last().attr('id',time)
+   $('#dyn-id').attr('id',time)
    $('.accordion-toggle').last().attr('href',"#" + time)
 
    # collapse all accordions first, then then remove for the last (newly added package)
@@ -31,8 +33,4 @@ jQuery ->
    event.preventDefault()
 
 
- $('form').on 'click', '.add_items', (event) ->
-   time = new Date().getTime()
-   regexp = new RegExp($(this).data('id'), 'g')
-   $(this).before($(this).data('fields').replace(regexp, time))
-   event.preventDefault()
+
