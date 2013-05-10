@@ -1,10 +1,10 @@
 <fieldset>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#azren">Grandmother Story</a>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#dyn-id">Grandmother Story</a>
     </div>
-    <div id="azren" class="accordion-body collapse in">
-      <div class="well">
+    <div id="dyn-id" class="accordion-body collapse">
+      <div class="well" style="background-color:transparent; border:none; margin-bottom:0px" >
         <%= link_to "Remove Package", '#', class: "remove_fields" %>
         <%= f.input :reference_id, label: 'Package Reference ID:' %>
         <%= f.fields_for :items do |builder| %>

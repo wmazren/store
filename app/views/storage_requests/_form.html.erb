@@ -34,12 +34,10 @@
         <h3>Package Details</h3>
       </div> <!-- /widget-header -->
       <div class="widget-content">
-        <div id="package-container">
-          <div class="accordion" id="accordion2">
-            <%= f.fields_for :packages do |builder| %>
-              <%= render 'package_fields', f: builder %>
-            <% end %>
-          </div>
+        <div class="accordion" id="accordion2">
+          <%= f.fields_for :packages do |builder| %>
+            <%= render 'package_fields', f: builder %>
+          <% end %>
         </div>
       </div>
     </div>
