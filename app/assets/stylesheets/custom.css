@@ -5,5 +5,11 @@
 
 Last change:	03/25/2013
 Assigned to:	You
-
+Edited by: Hargopal Singh
 -------------------------------------------------------------------*/
+
+/*this is to remove the 10px margin-bottom within the new storage request - package reference ID field within accordion headers*/
+td > .control-group {
+    margin-bottom: 0px;
+}
+
