@@ -1,12 +1,12 @@
 <fieldset>
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#dyn-id">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= @storage_request.id %>">
 
         <table width="100%">
           <tr width="100%" height="2px">
             <td style="text-align:left " width="90%">
-              <%= f.input :reference_id, placeholder: 'Box name', :label => false, :input_html => { :class => "span6", :style => "background-color: transparent; border: transparent; margin-bottom: 0px"} %>
+              <%= f.input :reference_id, placeholder: 'Package Reference ID', :label => false, :input_html => { :class => "span6", :style => "background-color: transparent; border: transparent; margin-bottom: 0px"} %>
             </td>
             <td style="text-align:right; control-group{margin-bottom: 0px;}" width="10%">
               <%= f.hidden_field :_destroy %>
@@ -17,7 +17,7 @@
 
       </a>
     </div>
-    <div id="dyn-id" class="accordion-body collapse">
+    <div id="<%= @storage_request.id %>" class="accordion-body collapse">
       <div class="well" style="background-color:transparent; border:none; margin-bottom:0px" >
 
 

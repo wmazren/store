@@ -1,8 +1,9 @@
 class Package < ActiveRecord::Base
   attr_accessible :reference_id, :items_attributes
+
   belongs_to :storage_request
-  belongs_to :user
   has_many :items
+
   validates :reference_id, :items, :presence => true
   accepts_nested_attributes_for :items, allow_destroy: true
 

@@ -5,6 +5,9 @@
 
   <div class="form-inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
+    <%= f.input :full_name, :required => true %>
+    <%= f.input :position, :required => true %>
+    <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons, :checked => "Admin" %>
     <%= f.input :role, :required => true, :collection => [ "Super User", "Admin", "User" ], :selected => "User" %>
     <%= f.input :password, :required => true %>
     <%= f.input :password_confirmation, :required => true %>

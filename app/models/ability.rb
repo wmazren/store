@@ -7,16 +7,19 @@ class Ability
         if user.role == "Super User"
           can :manage, User
           can :manage, Dashboard
+          can :manage, StorageRequest
         end
 
         if user.role == "Admin"
             can :manage, User
             can :manage, Dashboard
+            can :manage, StorageRequest
         end
 
         if user.role == "User"
           can [:read, :update], User, :id => user.id
           can :manage, Dashboard
+          can :manage, StorageRequest, :user_id => user.id
         end
 
     # Define abilities for the passed in user here. For example:

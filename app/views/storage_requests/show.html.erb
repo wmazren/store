@@ -7,9 +7,7 @@
       </div> <!-- /widget-header -->
 
       <div class="widget-content">
-        <p><b>Due Date: </b><%= @storage_request.due_date %></p>
-        <p><b>Requested By: </b><%= @storage_request.user.full_name %></p>
-        <p><b>Number of Package(s): </b><%= pluralize(@storage_request.packages.size, "Package") %></p>
+        <p><b>Number of Box(s): </b><%= pluralize(@storage_request.packages.size, "Box") %></p>
       </div>
     </div>
   </div>
@@ -18,7 +16,7 @@
     <div class="widget stacked ">
       <div class="widget-header">
         <i class="icon-file"></i>
-        <h3>Requested Package(s)</h3>
+        <h3>Requested Box(s)</h3>
       </div> <!-- /widget-header -->
 
       <div class="widget-content">

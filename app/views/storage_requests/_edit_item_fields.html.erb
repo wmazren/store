@@ -1,0 +1,8 @@
+<fieldset>
+  <%= f.input :name, :wrapper => :prepend, :label => false do %>
+    <%= content_tag :span, "Item Name", :class => "add-on" %>
+    <%= f.input_field :name, :class => 'span4' %>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: "add-on remove_fields" %>
+  <% end %>
+</fieldset>

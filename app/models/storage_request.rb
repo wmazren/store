@@ -1,8 +1,11 @@
 class StorageRequest < ActiveRecord::Base
   attr_accessible :due_date, :user_id, :packages_attributes
+
   belongs_to :user
   has_many :packages
+
   validates :due_date, :packages, :presence => true
+
   accepts_nested_attributes_for :packages, :allow_destroy => true
 
  # validate :check_packages
