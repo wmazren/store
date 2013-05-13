@@ -4,7 +4,7 @@ class StorageRequest < ActiveRecord::Base
   belongs_to :user
   has_many :packages
 
-  validates :due_date, :packages, :presence => true
+  validates :packages, :presence => true
 
   accepts_nested_attributes_for :packages, :allow_destroy => true
 
