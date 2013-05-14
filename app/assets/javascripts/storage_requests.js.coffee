@@ -8,7 +8,9 @@ jQuery ->
  $('form').on 'click', '.add_items', (event) ->
    time = new Date().getTime()
    regexp = new RegExp($(this).data('id'), 'g')
-   $(this).before($(this).data('fields').replace(regexp, time))
+   accordionID = $(this).closest('.accordion-toggle').attr('data-href').toString()
+   accordionID = accordionID.replace("#","")
+   $('#' + accordionID).children('.well').append($(this).data('fields').replace(regexp, time))
    event.preventDefault()
 
  $('form').on 'click', '.add_fields', (event) ->
@@ -17,8 +19,8 @@ jQuery ->
    $('#accordion2').append($(this).data('fields').replace(regexp, time));
 
    $('#dyn-id').attr('id',time)
-   $('.accordion-toggle').last().attr('href',"#" + time)
-
+   $('.accordion-toggle').last().attr('data-href',"#" + time)
+   $('.accordion-toggle').last().find('.icon-chevron-down').attr('href',"#" + time)
    # collapse all accordions first, then then remove for the last (newly added package)
    $('.accordion-toggle').addClass('collapsed')
    $('.accordion-toggle').last().removeClass('collapsed')
