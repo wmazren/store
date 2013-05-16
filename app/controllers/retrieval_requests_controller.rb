@@ -1,10 +1,10 @@
 class RetrievalRequestsController < ApplicationController
   before_filter :authenticate_user!
-  # load_and_authorize_resource
+  load_and_authorize_resource
 
   def index
       # @storage_requests = StorageRequest.all
-      @items = Item.all
+      @items = Item.where(:user_id => current_user.id)
       # @package = Pacakge.all
   end
 
