@@ -6,6 +6,7 @@
         <table width="100%">
           <tr width="100%" height="2px">
             <td style="text-align:left " width="90%">
+              <%= f.hidden_field :user_id, :value => current_user.id %>
               <%= f.input :reference_id, placeholder: 'Box name', :label => false, :input_html => { :class => "span5", :style => "background-color: transparent; border: transparent; margin-bottom: 0px"} %>
             </td>
             <td style="text-align:right; control-group{margin-bottom: 0px;}" width="10%">
