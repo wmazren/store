@@ -8,12 +8,14 @@ class Ability
           can :manage, User
           can :manage, Dashboard
           can :manage, StorageRequest
+          can :manage, RetrievalRequest
         end
 
         if user.role == "Admin"
             can :manage, User
             can :manage, Dashboard
             can :manage, StorageRequest
+            can :manage, RetrievalRequest
         end
 
         if user.role == "User"
