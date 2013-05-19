@@ -1,6 +1,12 @@
 Store::Application.routes.draw do
   resources :storage_requests
 
+  resources :retrieval_requests do
+    collection do
+      put :continue
+    end
+  end
+
   resources :dashboards, :only => [:index]
 
   devise_for :users, :path_prefix => 'd'

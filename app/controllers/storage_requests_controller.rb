@@ -3,7 +3,7 @@ class StorageRequestsController < ApplicationController
   load_and_authorize_resource
 
   def index
-      # @storage_requests = StorageRequest.all
+    @storage_requests = StorageRequest.all
   end
 
 def show
