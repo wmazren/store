@@ -1,11 +1,9 @@
 Store::Application.routes.draw do
   resources :storage_requests
 
-  resources :retrieval_requests do
-    collection do
-      put :continue
-    end
-  end
+  resources :retrieval_requests
+
+  resources :packages
 
   resources :dashboards, :only => [:index]
 

@@ -6,7 +6,7 @@ class StorageRequestsController < ApplicationController
     @storage_requests = StorageRequest.all
   end
 
-def show
+  def show
     @storage_request = StorageRequest.find(params[:id])
   end
 

@@ -3,27 +3,28 @@
     <div class="widget stacked ">
       <div class="widget-header">
         <i class="icon-briefcase"></i>
-        <h3>List Boxes and Items</h3>
+        <h3>List Retrieval Request</h3>
       </div> <!-- /widget-header -->
       <div class="widget-content">
-
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="admin_users">
           <thead>
             <tr>
+              <th>Request Date</th>
               <th>Box Name</th>
-              <th>Item Name</th>
+              <th>Status</th>
               <th class="td-actions">Action</th>
             </tr>
           </thead>
           <tbody>
-            <% @items.each do |item| %>
-              <tr>
-                <td><%= item.package.reference_id %></td>
-                <td><%= item.name %></td>
-                <td class="td-actions">
-                  <%= link_to "Retrieve this box", retrieval_requests_path(user_id: current_user.id, package_id: item.package.id), :method => :post, :class => 'btn btn-primary'%>
-                </td>
-              </tr>
+            <% @retrieval_requests.each do |retrieval_request| %>
+            <tr>
+              <td><%= retrieval_request.created_at.strftime("%d %b, %Y") %></td>
+              <td><%= retrieval_request.package.reference_id %></td>
+              <td><%= retrieval_request.id %></td>
+              <td class="td-actions">
+
+              </td>
+            </tr>
             <% end %>
           </tbody>
         </table>
@@ -31,3 +32,4 @@
     </div>
   </div>
 </div>
+
