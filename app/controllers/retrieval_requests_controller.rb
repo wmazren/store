@@ -5,6 +5,10 @@
       def index
       end
 
+      def show
+        @retrieval_request = RetrievalRequest.find(params[:id])
+      end
+
       def create
         @retrieval_request = RetrievalRequest.new(:user_id => params[:user_id], :package_id => params[:package_id], :status => params[:status])
         if @retrieval_request.save
