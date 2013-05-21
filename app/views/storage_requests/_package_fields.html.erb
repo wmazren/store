@@ -10,10 +10,10 @@
               <%= f.input :reference_id, placeholder: 'Box name', :label => false, :input_html => { :class => "span5", :style => "background-color: transparent; border: transparent; margin-bottom: 0px"} %>
             </td>
             <td style="text-align:right; control-group{margin-bottom: 0px;}" width="10%">
-              <a class="icon-chevron-down icon-shadow" data-toggle="collapse" href="#dyn-id"></a>
+              <a class="icon-chevron-down icon-shadow" data-toggle="collapse" href="#dyn-id" title="Expand/Collapse Box"></a>
               <%= link_to_add_items "", f, :items %>
               <%= f.hidden_field :_destroy %>
-              <%= link_to "", '#', class: "icon-remove remove_fields " %>
+              <%= link_to "", '#', class: "icon-remove remove_fields", :title => "Remove Box" %>
             </td>
           </tr>
         </table>
