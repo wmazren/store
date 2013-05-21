@@ -20,5 +20,10 @@ class Package < ActiveRecord::Base
 
   attr_accessible :reference_id, :user_id, :status, :items_attributes
 
+  before_validation :uppercase_fields
+
+  def uppercase_fields
+    self.reference_id.upcase!
+  end
 
 end

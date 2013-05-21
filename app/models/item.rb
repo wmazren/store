@@ -5,4 +5,11 @@ class Item < ActiveRecord::Base
   validates :name, :presence => true
 
   attr_accessible :name, :user_id
+
+  before_validation :uppercase_fields
+
+  def uppercase_fields
+    self.name.upcase!
+  end
+
 end
