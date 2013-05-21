@@ -16,11 +16,15 @@ class StorageRequestsController < ApplicationController
 
   def create
     if params[:submit] == "Save as Draft"
-      @storage_request = StorageRequest.new(params[:storage_request], status => params["test"])
+      params[:storage_request][:status] = "draft"
+      @storage_request = StorageRequest.new(params[:storage_request])
+      # storage_request.status = "draft"
+
     end
     if params[:submit] == "Submit"
       @storage_request = StorageRequest.new(params[:storage_request])
     end
+
     if @storage_request.save
       redirect_to @storage_request, notice: "Successfully created storage request."
     else
