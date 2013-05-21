@@ -18,7 +18,7 @@
       <div class="widget-content">
         <div>
           <%= f.hidden_field :user_id, :value => current_user.id %>
-          <%= link_to_add_fields "Add Package", f, :packages %>
+          <%= link_to_add_fields "Add Box", f, :packages %>
           <%= f.button :submit ,'Submit', :class => 'btn btn-primary' %>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="widget stacked ">
       <div class="widget-header">
         <i class="icon-briefcase"></i>
-        <h3>Package Details</h3>
+        <h3>Box Details</h3>
       </div> <!-- /widget-header -->
       <div class="widget-content">
         <div class="accordion" id="accordion2">
