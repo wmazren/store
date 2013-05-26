@@ -15,19 +15,10 @@ class StorageRequestsController < ApplicationController
   end
 
   def create
-    # if params[:submit] == "Save as Draft"
-      # params[:storage_request][:status] = "draft"
-      # @storage_request = StorageRequest.new(params[:storage_request])
-      # storage_request.status = "draft"
-
-    # end
-
-    # if params[:submit] == "Submit"
-      # @storage_request = StorageRequest.new(params[:storage_request])
-    # end
     @storage_request = StorageRequest.new(params[:storage_request])
+
     if params[:draft] == "Save as Draft"
-      @storage_request.status = 'draft'
+      @storage_request.drafted
     end
 
     if @storage_request.save
@@ -44,6 +35,11 @@ class StorageRequestsController < ApplicationController
 
   def update
     @storage_request = StorageRequest.find(params[:id])
+
+    if params[:draft] == "Submit"
+      @storage_request.submited
+    end
+
     if @storage_request.update_attributes(params[:storage_request])
       redirect_to @storage_request, notice: "Successfully updated storage request."
     else

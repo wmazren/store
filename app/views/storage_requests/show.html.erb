@@ -3,11 +3,18 @@
     <div class="widget stacked ">
       <div class="widget-header">
         <i class="icon-briefcase"></i>
-        <h3>Storage Request <%= @storage_request.id %></h3>
+        <h3>Storage Request</h3>
       </div> <!-- /widget-header -->
 
       <div class="widget-content">
         <p><b>Number of Box(s): </b><%= pluralize(@storage_request.packages.size, "Box") %></p>
+        <% if @storage_request.state == "draft" %>
+          <p><b>Status: </b><span class="label label-warning"><%= @storage_request.state %></span></p>
+          <%= render 'dashboards/users/alert' %>
+          <%= link_to "Edit / Submit", edit_storage_request_path(@storage_request), :class => 'btn btn-primary' %>
+        <% else %>
+          <p><b>Status: </b><%= @storage_request.state %></p>
+        <% end %>
       </div>
     </div>
   </div>

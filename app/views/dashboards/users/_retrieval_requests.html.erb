@@ -1,0 +1,39 @@
+<div class="widget widget-table">
+  <div class="widget-header">
+    <span class="icon-list-alt"></span>
+    <h3>Open Retreival Request</h3>
+  </div> <!-- .widget-header -->
+
+  <div class="widget-content">
+
+    <div class="accordion" id="basic-accordion">
+      <div class="accordion-group">
+
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseThree">Open</a>
+        </div>
+        <div id="collapseThree" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <table class="table table-bordered table-striped">
+              <thead><tr>
+                <th>Request Date</th>
+                <th>Box Name</th>
+                <th>Status</th>
+              </tr></thead>
+
+              <tbody>
+                <% @retrieval_requests_open.each do |retrieval_requests_open| %>
+                  <tr>
+                    <td><%= retrieval_requests_open.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= retrieval_requests_open.package.reference_id %></td>
+                    <td><%= retrieval_requests_open.state %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> <!-- accordion-group -->
+    </div> <!-- accordion -->
+  </div> <!-- .widget-content -->
+</div> <!-- /widget -->

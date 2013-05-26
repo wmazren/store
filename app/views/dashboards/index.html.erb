@@ -3,11 +3,7 @@
     <div class="container">
 
       <% if current_user.role == "User" %>
-        <% if @storage_requests.count > 0 %>
-          <%= render 'dashboards/users/alert' %>
-        <% else %>
-          <%= render 'dashboards/users/stats' %>
-        <% end %>
+        <%= render 'dashboards/users/index' %>
       <% end %>
 
       <% if current_user.role == "Admin"  || current_user.role == "Super Admin" %>

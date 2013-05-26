@@ -1,0 +1,67 @@
+<div class="widget widget-table">
+  <div class="widget-header">
+    <span class="icon-list-alt"></span>
+    <h3>Open Storage Request</h3>
+  </div> <!-- .widget-header -->
+
+  <div class="widget-content">
+
+    <div class="accordion" id="basic-accordion">
+      <div class="accordion-group">
+
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseOne">Draft</a>
+        </div>
+        <div id="collapseOne" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <table class="table table-bordered table-striped">
+              <thead><tr>
+                <th>Request Date</th>
+                <th>Number of Boxes</th>
+                <th>Action</th>
+              </tr></thead>
+
+              <tbody>
+                <% @storage_requests_open.where(:state => "draft").each do |storage_requests_open| %>
+                  <tr>
+                    <td><%= storage_requests_open.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= pluralize(storage_requests_open.packages.size, "Box") %></td>
+                    <td class="td-actions">
+                      <%= link_to "Edit / Submit", edit_storage_request_path(storage_requests_open), :class => 'btn btn-mini btn-primary'%>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseTwo">Open</a>
+        </div>
+        <div id="collapseTwo" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <table class="table table-bordered table-striped">
+              <thead><tr>
+                <th>Request Date</th>
+                <th>Number of Boxes</th>
+                <th>Status</th>
+              </tr></thead>
+
+              <tbody>
+                <% @storage_requests_open.where(:state => "new").each do |storage_requests_open| %>
+                  <tr>
+                    <td><%= storage_requests_open.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= pluralize(storage_requests_open.packages.size, "Box") %></td>
+                    <td><%= storage_requests_open.state %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div> <!-- accordion-group -->
+    </div> <!-- accordion -->
+  </div> <!-- .widget-content -->
+</div> <!-- /widget -->

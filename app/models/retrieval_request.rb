@@ -2,6 +2,12 @@ class RetrievalRequest < ActiveRecord::Base
   belongs_to :user
   belongs_to :package
 
+  state_machine :initial => :new do
+    event :completed do
+      transition :open => :closed
+    end
+  end
+
   after_create :change_package_state
   after_update :check_status
 
