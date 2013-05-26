@@ -3,11 +3,15 @@
     <div class="container">
 
       <% if current_user.role == "User" %>
+        <% if @storage_requests.count > 0 %>
+          <%= render 'dashboards/users/alert' %>
+        <% else %>
           <%= render 'dashboards/users/stats' %>
+        <% end %>
       <% end %>
 
       <% if current_user.role == "Admin"  || current_user.role == "Super Admin" %>
-          <h4>"Admin Page"</h4>
+        <h4>"Admin Page"</h4>
       <% end %>
 
     </div> <!-- /container -->
