@@ -3,6 +3,7 @@ class Package < ActiveRecord::Base
   belongs_to :storage_request
   has_many :retrieval_requests
   has_many :items
+  has_one :slot
 
   state_machine :initial => :virgin do
     event :retrieve do

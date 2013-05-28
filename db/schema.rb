@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130526183501) do
+ActiveRecord::Schema.define(:version => 20130528091854) do
+
+  create_table "bays", :force => true do |t|
+    t.string   "name"
+    t.integer  "num_of_levels"
+    t.integer  "num_of_slots_per_level"
+    t.integer  "floor_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  create_table "floors", :force => true do |t|
+    t.string   "name"
+    t.integer  "warehouse_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -19,6 +35,13 @@ ActiveRecord::Schema.define(:version => 20130526183501) do
     t.datetime "updated_at", :null => false
     t.integer  "package_id"
     t.integer  "user_id"
+  end
+
+  create_table "levels", :force => true do |t|
+    t.string   "name"
+    t.integer  "bay_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "packages", :force => true do |t|
@@ -36,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20130526183501) do
     t.datetime "updated_at", :null => false
     t.integer  "package_id"
     t.string   "state"
+  end
+
+  create_table "slots", :force => true do |t|
+    t.string   "name"
+    t.string   "state"
+    t.integer  "level_id"
+    t.integer  "package_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "storage_requests", :force => true do |t|
@@ -79,5 +111,11 @@ ActiveRecord::Schema.define(:version => 20130526183501) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "warehouses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
