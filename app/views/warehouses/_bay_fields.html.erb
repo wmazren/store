@@ -1,7 +1,7 @@
 <fieldset>
   <%= f.input :name, :wrapper => :prepend, :label => false do %>
     <%= content_tag :span, "Bay Name", :class => "add-on" %>
-    <%= f.input_field :name, :class => 'span2', :style => "text-transform:uppercase" %>
+    <%= f.input_field :name, :id => "bay-id", :class => 'span2 baystyle', :style => "text-transform:uppercase" %>
     <%= f.input_field :num_of_levels, :collection => [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ], :selected => "5" %>
     <%= f.input_field :num_of_slots_per_level, :collection => [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ], :selected => "8" %>
     <%= f.hidden_field :_destroy %>
