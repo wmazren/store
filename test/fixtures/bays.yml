@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  num_of_levels: 1
+  num_of_slots_per_level: 1
+  floor_id: 1
+
+two:
+  name: MyString
+  num_of_levels: 1
+  num_of_slots_per_level: 1
+  floor_id: 1

@@ -1,0 +1,40 @@
+<%= simple_form_for @warehouse do |f| %>
+
+  <% if @warehouse.errors.any? %>
+    <div class="alert fadeout" data-dismiss="alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <% @warehouse.errors.full_messages.each do |msg| %>
+        <%= msg %><br>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class = "span11">
+    <%= f.input :name, :required => true, :placeholder => "Enter Store Name" %>
+    <div class = "pull-left">
+      <%= link_to_add_fields "Add Floor", f, :floors %>
+    </div>
+    <div class = "pull-right">
+      <%= f.button :submit, 'Submit', :class => 'btn btn-danger' %>
+    </div>
+  </div>
+
+  <br></br>
+
+  <div class="span11">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-briefcase"></i>
+        <h3>Store Details</h3>
+      </div> <!-- /widget-header -->
+      <div class="widget-content">
+        <div class="accordion" id="accordion2">
+          <%= f.fields_for :floors do |builder| %>
+            <%= render 'floor_fields', f: builder %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
