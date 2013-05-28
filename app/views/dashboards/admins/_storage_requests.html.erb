@@ -1,0 +1,44 @@
+<div class="widget widget-table">
+  <div class="widget-header">
+    <span class="icon-list-alt"></span>
+    <h3>Open Storage Request</h3>
+  </div> <!-- .widget-header -->
+
+  <div class="widget-content">
+
+    <div class="accordion" id="basic-accordion">
+      <div class="accordion-group">
+
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseTwo">Open</a>
+        </div>
+        <div id="collapseTwo" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <table class="table table-bordered table-striped">
+              <thead><tr>
+                <th>Request Date</th>
+                <th>Number of Boxes</th>
+                <th>Status</th>
+                <th class="td-actions">Action</th>
+              </tr></thead>
+
+              <tbody>
+                <% @storage_requests_open_admin.each do |storage_requests_open_admin| %>
+                  <tr>
+                    <td><%= storage_requests_open_admin.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= pluralize(storage_requests_open_admin.packages.size, "Box") %></td>
+                    <td><%= storage_requests_open_admin.state %></td>
+                    <td class="td-actions">
+                      <%= link_to "Edit", edit_storage_request_path(storage_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div> <!-- accordion-group -->
+    </div> <!-- accordion -->
+  </div> <!-- .widget-content -->
+</div> <!-- /widget -->

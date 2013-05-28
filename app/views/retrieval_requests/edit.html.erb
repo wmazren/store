@@ -63,7 +63,7 @@
                 </div>
               </div>
 
-              <%= f.input :status, label: 'Request Status', :collection => [ "new", "in progress", "delivered to client", "pending collection", "completed" ], :required => true, :autofocus => true %>
+              <%= f.input :state, :collection => (RetrievalRequest.state_machine.states.map &:name) %>
             </div>
           </div>
         </div>

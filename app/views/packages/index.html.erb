@@ -12,7 +12,9 @@
             <tr>
               <th>Request Date</th>
               <th>Box Name</th>
-              <th>Item Name</th>
+              <% if current_user.role == "User" %>
+                <th>Item Name</th>
+              <% end %>
               <th class="td-actions">Action</th>
             </tr>
           </thead>
@@ -22,7 +24,9 @@
                 <tr>
                   <td><%= package.created_at.strftime("%d %b, %Y") %></td>
                   <td><%= package.reference_id %></td>
-                  <td><%= item.name %></td>
+                  <% if current_user.role == "User" %>
+                    <td><%= item.name %></td>
+                  <% end %>
                   <td class="td-actions">
                     <% if package.state == "virgin" %>
                       <%= link_to "Retrieve this box", retrieval_requests_path(user_id: current_user.id, package_id: package.id), :method => :post, :class => 'btn btn-mini btn-primary' %>

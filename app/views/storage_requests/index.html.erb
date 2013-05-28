@@ -10,20 +10,36 @@
           <thead>
             <tr>
               <th>Request Date</th>
+              <% if current_user.role == "Super User" %>
+                <th>Request By</th>
+              <% end %>
+              <% if current_user.role == "Admin" %>
+                <th>Request By</th>
+              <% end %>
               <th>Number of Box(s)</th>
               <th>Status</th>
-              <th class="td-actions">Action</th>
+              <% if current_user.role == "User" %>
+                <th class="td-actions">Action</th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
             <% @storage_requests.each do |storage_request| %>
             <tr>
               <td><%= storage_request.created_at.strftime("%d %b, %Y") %></td>
+              <% if current_user.role == "Super User" %>
+                <td><%= storage_request.user.full_name %></td>
+              <% end %>
+              <% if current_user.role == "Admin" %>
+                <td><%= storage_request.user.full_name %></td>
+              <% end %>
               <td><%= pluralize(storage_request.packages.size, "Box") %></td>
               <td><%= storage_request.state %></td>
-              <td class="td-actions">
-                <%= link_to "View", storage_request_path(storage_request), :class => 'btn btn-mini btn-primary'%>
-              </td>
+              <% if current_user.role == "User" %>
+                <td class="td-actions">
+                  <%= link_to "View", storage_request_path(storage_request), :class => 'btn btn-mini btn-primary'%>
+                </td>
+              <% end %>
             </tr>
             <% end %>
           </tbody>

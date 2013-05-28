@@ -1,0 +1,16 @@
+<% if @storage_requests_draft.count > 0 %>
+  <%= render 'dashboards/admins/alert' %>
+<% end %>
+
+<%= render 'dashboards/admins/stats' %>
+
+<div class="row">
+  <div class="span8">
+    <%= render 'dashboards/admins/storage_requests' %>
+    <%= render 'dashboards/admins/retrieval_requests' %>
+  </div> <!-- /span8 -->
+  <div class="span4">
+    <%= render 'dashboards/admins/quick_shortcuts' %>
+  </div> <!-- /span4 -->
+</div> <!-- /row -->
+

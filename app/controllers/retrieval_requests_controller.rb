@@ -10,7 +10,7 @@
       end
 
       def create
-        @retrieval_request = RetrievalRequest.new(:user_id => params[:user_id], :package_id => params[:package_id],)
+        @retrieval_request = RetrievalRequest.new(:user_id => params[:user_id], :package_id => params[:package_id])
         if @retrieval_request.save
           redirect_to retrieval_requests_path, notice: "Successfully created retrieval request."
         else
@@ -20,7 +20,7 @@
 
       def edit
         @retrieval_request = RetrievalRequest.find(params[:id])
-        @retrieval_requests = RetrievalRequest.all
+        #@retrieval_requests = RetrievalRequest.all
       end
 
       def update

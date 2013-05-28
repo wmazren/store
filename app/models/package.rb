@@ -25,5 +25,4 @@ class Package < ActiveRecord::Base
   def uppercase_fields
     self.reference_id.upcase!
   end
-
 end

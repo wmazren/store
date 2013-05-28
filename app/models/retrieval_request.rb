@@ -3,15 +3,27 @@ class RetrievalRequest < ActiveRecord::Base
   belongs_to :package
 
   state_machine :initial => :new do
+    event :open do
+      transition :new => :in_progress
+    end
+
+    event :delivered do
+      transition :in_progress => :delivered_to_client
+    end
+
+    event :collected do
+      transition :delivered_to_client => :pending_storage
+    end
+
     event :completed do
-      transition :open => :closed
+      transition :pending_storage => :closed
     end
   end
 
   after_create :change_package_state
   after_update :check_status
 
-  attr_accessible :user_id, :status, :package_id
+  attr_accessible :user_id, :package_id, :state
 
   private
 
@@ -20,7 +32,7 @@ class RetrievalRequest < ActiveRecord::Base
   end
 
   def check_status
-    if self.status == "completed"
+    if self.state == "closed"
       self.package.completed
     end
   end

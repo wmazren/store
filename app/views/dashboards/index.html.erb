@@ -6,8 +6,12 @@
         <%= render 'dashboards/users/index' %>
       <% end %>
 
-      <% if current_user.role == "Admin"  || current_user.role == "Super Admin" %>
-        <h4>"Admin Page"</h4>
+      <% if current_user.role == "Admin" %>
+        <%= render 'dashboards/admins/index' %>
+      <% end %>
+
+      <% if current_user.role == "Super User" %>
+        <%= render 'dashboards/admins/index' %>
       <% end %>
 
     </div> <!-- /container -->
