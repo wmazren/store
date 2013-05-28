@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528091854) do
+ActiveRecord::Schema.define(:version => 20130528124126) do
 
   create_table "bays", :force => true do |t|
     t.string   "name"
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(:version => 20130528091854) do
   create_table "levels", :force => true do |t|
     t.string   "name"
     t.integer  "bay_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "num_of_slots_per_level"
   end
 
   create_table "packages", :force => true do |t|

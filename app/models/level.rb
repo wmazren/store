@@ -2,5 +2,17 @@ class Level < ActiveRecord::Base
   belongs_to :bay
   has_many :slots
 
-  attr_accessible :bay_id, :name
+  after_create :create_slot_records
+
+  attr_accessible :bay_id, :name, :num_of_slots_per_level
+
+  private
+
+  def create_slot_records
+    slt = self.num_of_slots_per_level.to_i
+
+    slt.times do
+      self.slots.create()
+    end
+  end
 end
