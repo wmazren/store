@@ -11,8 +11,8 @@ class Level < ActiveRecord::Base
   def create_slot_records
     slt = self.num_of_slots_per_level.to_i
 
-    slt.times do
-      self.slots.create()
+    slt.times do |y|
+      self.slots.create(:name => y + 1)
     end
   end
 end

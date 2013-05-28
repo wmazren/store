@@ -9,10 +9,10 @@ class Bay < ActiveRecord::Base
   private
 
   def create_level_records
-    lvl = self.num_of_levels.to_i
+    lvl = self.num_of_levels
 
-    lvl.times do
-      self.levels.create(:num_of_slots_per_level => self.num_of_slots_per_level)
+    lvl.times do |x|
+      self.levels.create(:num_of_slots_per_level => self.num_of_slots_per_level, :name => x + 1)
     end
   end
 end
