@@ -17,6 +17,7 @@
             <table class="table table-bordered table-striped">
               <thead><tr>
                 <th>Request Date</th>
+                <th>Business Unit</th>
                 <th>Number of Boxes</th>
                 <th>Status</th>
                 <th class="td-actions">Action</th>
@@ -26,8 +27,9 @@
                 <% @storage_requests_open_admin.each do |storage_requests_open_admin| %>
                   <tr>
                     <td><%= storage_requests_open_admin.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= storage_requests_open_admin.user.business_unit %></td>
                     <td><%= pluralize(storage_requests_open_admin.packages.size, "Box") %></td>
-                    <td><%= storage_requests_open_admin.state %></td>
+                    <td><%= storage_requests_open_admin.state.humanize %></td>
                     <td class="td-actions">
                       <%= link_to "Edit", edit_storage_request_path(storage_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
                     </td>

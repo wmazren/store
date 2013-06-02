@@ -3,16 +3,26 @@ class StorageRequest < ActiveRecord::Base
   has_many :packages
 
   state_machine :initial => :new do
+    event :started do
+      transition :new => :in_progress
+    end
+
+    event :completed do
+      transition :in_progress => :closed
+    end
+  end
+
+  state_machine  :submit_state, :initial => :new do
     event :drafted do
       transition :new => :draft
     end
 
     event :submited do
-      transition :draft => :in_progress
+      transition :draft => :submit
     end
 
-    event :completed do
-      transition :open => :closed
+    event :closer do
+      transition :submit => :closed
     end
   end
 

@@ -28,7 +28,7 @@ class RetrievalRequest < ActiveRecord::Base
   private
 
   def change_package_state
-    self.package.retrieve
+    self.package.started
   end
 
   def check_status

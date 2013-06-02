@@ -1,112 +1,82 @@
+<%= simple_form_for(@storage_request, :html => { :class => 'form-horizontal' }) do |f| %>
 <div class="row">
-  <div class="span4">
-    <div class="widget stacked ">
-      <div class="widget-header">
-        <i class="icon-briefcase"></i>
-        <h3>Edit Storage Request</h3>
-      </div> <!-- /widget-header -->
-
-      <div class="widget-content">
-
-      </div>
-    </div>
-  </div>
-
   <div class="span8">
     <div class="widget stacked ">
       <div class="widget-header">
-        <i class="icon-briefcase"></i>
-        <h3>Edit Storage Request</h3>
+        <i class="icon-pencil"></i>
+        <h3>Edit: Storage Request</h3>
       </div> <!-- /widget-header -->
 
       <div class="widget-content">
-        <%= simple_form_for @storage_request do |f| %>
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#box_details" data-toggle="tab">Details</a>
+            </li>
+          </ul>
 
-          <% if @storage_request.errors.any? %>
-            <div class="alert fadeout" data-dismiss="alert">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <% @storage_request.errors.full_messages.each do |msg| %>
-                <%= msg %><br>
-              <% end %>
-            </div>
-          <% end %>
+          <br>
 
-          <div class = "span11">
-            <div class = "pull-left">
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= link_to_add_fields "Add Box", f, :packages %>
-            </div>
-            <div class = "pull-right">
-              <%= f.button :submit, 'Save as Draft', :name => 'draft', :class => 'btn btn-primary' %>
-              <%= f.button :submit, 'Submit', :name => 'draft', :class => 'btn btn-danger' %>
-            </div>
-          </div>
+          <div class="tab-content">
+            <div class="tab-pane active" id="box_details">
 
-          <br></br>
-
-          <div class="span11">
-            <div class="widget stacked ">
-              <div class="widget-header">
-                <i class="icon-briefcase"></i>
-                <h3>Box Details</h3>
-              </div> <!-- /widget-header -->
-              <div class="widget-content">
-                <div class="accordion" id="accordion2">
-
-
-                  <%= f.fields_for :packages do |builder1| %>
-
-                    <fieldset>
-                      <div class="accordion-group">
-                        <div class="accordion-heading">
-                          <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" style="cursor: default">
-
-                            <table width="100%">
-                              <tr width="100%" height="2px">
-                                <td style="text-align:left " width="90%">
-                                  <%= builder1.hidden_field :user_id, :value => current_user.id %>
-                                  <%= builder1.input :reference_id, placeholder: 'Box name', :label => false, :input_html => { :class => "span9", :style => "background-color: transparent; border: transparent; margin-bottom: 0px; text-transform:uppercase"} %>
-                                </td>
-                                <td style="text-align:right; control-group{margin-bottom: 0px;}" width="10%">
-
-                                  <a class="icon-chevron-down icon-shadow" data-toggle="collapse" href="#<%= builder1.to_s.gsub(/[^0-9a-z ]/i, '') %>" title="Expand/Collapse Box"></a>
-                                  <%= link_to_add_items "", builder1, :items %>
-                                  <%= builder1.hidden_field :_destroy %>
-                                  <%= link_to "", '#', class: "icon-remove remove_fields", :title => "Remove Box" %>
-                                </td>
-                              </tr>
-                            </table>
-
-                          </div>
-                        </div>
-                        <div id="<%= builder1.to_s.gsub(/[^0-9a-z ]/i, '') %>" class="accordion-body collapse">
-                          <div class="well" style="background-color:transparent; border:none; margin-bottom:0px" >
-                            <%= builder1.fields_for :items do |builder2| %>
-
-                              <fieldset>
-                                <%= builder2.input :name, :wrapper => :prepend, :label => false do %>
-                                  <%= builder2.hidden_field :user_id, :value => current_user.id %>
-                                  <%= content_tag :span, "Item Name", :class => "add-on" %>
-                                  <%= builder2.input_field :name, :class => 'span8', :style => "text-transform:uppercase" %>
-                                  <%= builder2.hidden_field :_destroy %>
-                                  <%= link_to "remove", '#', class: "add-on remove_fields" %>
-                                <% end %>
-                              </fieldset>
-
-                            <% end %>
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-
-                  <% end %>
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Box Location</label>
+                <div class="controls">
+                  <input class="input-xlarge" type="text" id="inputEmail" placeholder="***** under construction (module 3) *****" disabled>
                 </div>
               </div>
+
+              <br><br>
+
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Requested Date</label>
+                <div class="controls">
+                  <input  type="text" id="inputEmail" placeholder="<%= @storage_request.created_at.strftime("%d %b, %Y") %>" disabled>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Request Age</label>
+                <div class="controls">
+                  <input  type="text" id="inputEmail" placeholder="<%= time_ago_in_words(@storage_request.created_at.to_datetime)+' ago' %>" disabled>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Request By</label>
+                <div class="controls">
+                  <input  class="input-xlarge" type="text" id="inputEmail" placeholder="<%= @storage_request.user.email %>" disabled>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="inputEmail">Business Unit</label>
+                <div class="controls">
+                  <input  class="input-xlarge" type="text" id="inputEmail" placeholder="<%= @storage_request.user.business_unit %>" disabled>
+                </div>
+              </div>
+
+              <%= f.input :state, :collection => (StorageRequest.state_machine.states.map &:name) %>
             </div>
           </div>
+        </div>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span8 -->
 
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+  <div class="span4">
+    <div class="widget stacked widget-box">
+      <div class="widget-header">
+        <i class="icon-ok"></i>
+        <h3>Actions</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+        <%= f.button :submit ,'Submit', :class => 'btn btn-primary' %>
+        <%= link_to 'Cancel', action: :index, :class => 'btn' %>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget-box -->
+  </div> <!-- /span4 -->
+</div> <!-- /row -->
+<% end %>
