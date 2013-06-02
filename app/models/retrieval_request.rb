@@ -3,7 +3,7 @@ class RetrievalRequest < ActiveRecord::Base
   belongs_to :package
 
   state_machine :initial => :new do
-    event :open do
+    event :started do
       transition :new => :in_progress
     end
 

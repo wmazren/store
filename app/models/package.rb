@@ -5,13 +5,17 @@ class Package < ActiveRecord::Base
   has_many :items
   has_one :slot
 
-  state_machine :initial => :virgin do
+  state_machine :initial => :new do
+    event :store do
+      transition :new => :stored
+    end
+
     event :retrieve do
-      transition :virgin => :in_progress
+      transition :stored => :retrieval_in_progress
     end
 
     event :completed do
-      transition :in_progress => :virgin
+      transition :retrieval_in_progress => :stored
     end
   end
 
