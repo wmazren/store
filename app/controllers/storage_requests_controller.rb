@@ -41,7 +41,7 @@ class StorageRequestsController < ApplicationController
     end
 
     if @storage_request.update_attributes(params[:storage_request])
-      redirect_to @storage_request, notice: "Successfully updated storage request."
+      redirect_to dashboards_path, notice: "Successfully updated storage request."
     else
       render :edit
     end

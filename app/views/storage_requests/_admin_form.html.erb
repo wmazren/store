@@ -21,15 +21,6 @@
             <div class="tab-pane active" id="box_details">
 
               <div class="control-group">
-                <label class="control-label" for="inputEmail">Box Location</label>
-                <div class="controls">
-                  <input class="input-xlarge" type="text" id="inputEmail" placeholder="***** under construction (module 3) *****" disabled>
-                </div>
-              </div>
-
-              <br><br>
-
-              <div class="control-group">
                 <label class="control-label" for="inputEmail">Requested Date</label>
                 <div class="controls">
                   <input  type="text" id="inputEmail" placeholder="<%= @storage_request.created_at.strftime("%d %b, %Y") %>" disabled>
@@ -58,6 +49,8 @@
               </div>
 
               <%= f.input :state, :collection => (StorageRequest.state_machine.states.map &:name) %>
+
+              <%= f.association :warehouse %>
             </div>
           </div>
         </div>

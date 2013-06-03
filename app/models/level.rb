@@ -12,7 +12,8 @@ class Level < ActiveRecord::Base
     slt = self.num_of_slots_per_level.to_i
 
     slt.times do |y|
-      self.slots.create(:name => y + 1)
+      self.slots.create(:name => y + 1,
+                                  :warehouse_id => self.bay.floor.warehouse.id)
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602165051) do
+ActiveRecord::Schema.define(:version => 20130603162141) do
 
   create_table "bays", :force => true do |t|
     t.string   "name"
@@ -67,8 +67,9 @@ ActiveRecord::Schema.define(:version => 20130602165051) do
     t.string   "state"
     t.integer  "level_id"
     t.integer  "package_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "warehouse_id"
   end
 
   create_table "storage_requests", :force => true do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130602165051) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "state",        :default => "new"
+    t.integer  "warehouse_id"
   end
 
   create_table "users", :force => true do |t|
