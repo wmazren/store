@@ -16,6 +16,8 @@ gem 'font-awesome-rails'
 gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
 gem 'state_machine'
+gem 'barby'
+gem 'prawn'
 
 gem 'quiet_assets', :group => :development
 gem 'thin'

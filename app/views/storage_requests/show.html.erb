@@ -8,6 +8,7 @@
 
       <div class="widget-content">
         <p><b>Number of Box(s): </b><%= pluralize(@storage_request.packages.size, "Box") %></p>
+
         <% if @storage_request.submit_state == "draft" %>
           <p><b>Status: </b><span class="label label-warning"><%= @storage_request.state %></span></p>
           <%= render 'dashboards/users/alert' %>
@@ -15,6 +16,8 @@
         <% else %>
           <p><b>Status: </b><%= @storage_request.state %></p>
         <% end %>
+
+        <p><%= link_to "Printable (PDF)", storage_request_path(@storage_request, format: "pdf") %></p>
       </div>
     </div>
   </div>

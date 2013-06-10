@@ -70,11 +70,13 @@
                     <tr>
                       <td><%= package.reference_id %></td>
                       <td>
-                        <%= package.slot.level.bay.floor.warehouse.name %>/
-                        <%= package.slot.level.bay.floor.name %>/
-                        <%= package.slot.level.bay.name %>/
-                        <%= package.slot.level.name %>/
-                        <%= package.slot.name %>
+                        <% if package.slot != nil %>
+                          <%= package.slot.level.bay.floor.warehouse.name %>/
+                          <%= package.slot.level.bay.floor.name %>/
+                          <%= package.slot.level.bay.name %>/
+                          <%= package.slot.level.name %>/
+                          <%= package.slot.name %>
+                        <% end %>
                       </td>
                     </tr>
                   <% end %>

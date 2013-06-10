@@ -8,6 +8,15 @@ class StorageRequestsController < ApplicationController
 
   def show
     @storage_request = StorageRequest.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = StorageRequestPdf.new(@storage_request, view_context)
+        send_data pdf.render, filename: "storage_request_#{@storage_request.user.full_name}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
   end
 
   def new
