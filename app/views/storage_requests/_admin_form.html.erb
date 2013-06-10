@@ -13,6 +13,9 @@
             <li class="active">
               <a href="#box_details" data-toggle="tab">Details</a>
             </li>
+            <li>
+              <a href="#history" data-toggle="tab">History</a>
+            </li>
           </ul>
 
           <br>
@@ -51,7 +54,33 @@
               <%= f.input :state, :collection => (StorageRequest.state_machine.states.map &:name) %>
 
               <%= f.association :warehouse %>
+
+
             </div>
+              <div class="tab-pane" id="history">
+                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="all_users">
+                  <thead>
+                    <tr>
+                      <th>Box Name</th>
+                      <th>Box Location</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <% @storage_request.packages.each do |package| %>
+                    <tr>
+                      <td><%= package.reference_id %></td>
+                      <td>
+                        <%= package.slot.level.bay.floor.warehouse.name %>/
+                        <%= package.slot.level.bay.floor.name %>/
+                        <%= package.slot.level.bay.name %>/
+                        <%= package.slot.level.name %>/
+                        <%= package.slot.name %>
+                      </td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
           </div>
         </div>
       </div> <!-- /widget-content -->
