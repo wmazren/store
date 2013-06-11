@@ -1,4 +1,5 @@
 class StorageRequestPdf < Prawn::Document
+
   def initialize(storage_request, view)
     super(top_margin: 50)
     @storage_request = storage_request
@@ -8,6 +9,7 @@ class StorageRequestPdf < Prawn::Document
     list_packages
     #list_items
     item_rows
+    barcode
     repeater
   end
 
@@ -98,6 +100,17 @@ class StorageRequestPdf < Prawn::Document
       end
       table(rows, :column_widths => [30, 400], :header => true, :row_colors => ["F0F0F0", "FFFFCC"])
     end
+  end
+
+  def barcode
+
+    start_new_page
+    move_down 20
+
+    font "#{Rails.root}/app/assets/fonts/3OF9.TTF" do
+      text "HARGOPAL"
+    end
+
   end
 
   def repeater
