@@ -1,6 +1,6 @@
 <%= simple_form_for(@retrieval_request, :html => { :class => 'form-horizontal' }) do |f| %>
 <div class="row">
-  <div class="span8">
+  <div class="span9">
     <div class="widget stacked ">
       <div class="widget-header">
         <i class="icon-pencil"></i>
@@ -22,14 +22,14 @@
               <div class="control-group">
                 <label class="control-label" for="inputEmail">Box Name</label>
                 <div class="controls">
-                  <input class="input-xxlarge" type="text" id="inputEmail" placeholder="<%= @retrieval_request.package.reference_id %>" disabled>
+                  <input class="input-xlarge" type="text" id="inputEmail" placeholder="<%= @retrieval_request.package.reference_id %>" disabled>
                 </div>
               </div>
 
               <div class="control-group">
-                <label class="control-label" for="inputEmail">Box Location</label>
+                <label class="control-label" for="inputEmail">Requested Date</label>
                 <div class="controls">
-                  <input class="input-xlarge" type="text" id="inputEmail" placeholder="***** under construction (module 3) *****" disabled>
+                  <input  type="text" id="inputEmail" placeholder="<%= @retrieval_request.package.slot.level.bay.floor.warehouse.name %>-F<%= @retrieval_request.package.slot.level.bay.floor.name %>-B<%= @retrieval_request.package.slot.level.bay.name %>-L<%= @retrieval_request.package.slot.level.name %>-S<%= @retrieval_request.package.slot.name %>" disabled>
                 </div>
               </div>
 
@@ -71,7 +71,7 @@
     </div> <!-- /widget -->
   </div> <!-- /span8 -->
 
-  <div class="span4">
+  <div class="span3">
     <div class="widget stacked widget-box">
       <div class="widget-header">
         <i class="icon-ok"></i>

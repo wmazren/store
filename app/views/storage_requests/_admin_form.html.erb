@@ -71,11 +71,7 @@
                       <td><%= package.reference_id %></td>
                       <td>
                         <% if package.slot != nil %>
-                          <%= package.slot.level.bay.floor.warehouse.name %>/
-                          <%= package.slot.level.bay.floor.name %>/
-                          <%= package.slot.level.bay.name %>/
-                          <%= package.slot.level.name %>/
-                          <%= package.slot.name %>
+                          <%= package.slot.level.bay.floor.warehouse.name %>-F<%= package.slot.level.bay.floor.name %>-B<%= package.slot.level.bay.name %>-L<%= package.slot.level.name %>-S<%= package.slot.name %>
                         <% end %>
                       </td>
                     </tr>

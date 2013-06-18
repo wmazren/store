@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603162141) do
+ActiveRecord::Schema.define(:version => 20130613160420) do
 
   create_table "bays", :force => true do |t|
     t.string   "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130603162141) do
     t.integer  "storage_request_id"
     t.integer  "user_id"
     t.string   "state"
+    t.string   "barcode"
   end
 
   create_table "retrieval_requests", :force => true do |t|

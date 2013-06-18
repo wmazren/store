@@ -1,4 +1,4 @@
-class StorageRequestPdf < Prawn::Document
+class StorageRequestAdminPdf < Prawn::Document
 
   def initialize(storage_request, view)
     super(top_margin: 50)
@@ -7,7 +7,7 @@ class StorageRequestPdf < Prawn::Document
     logo
     user_info
     list_packages
-    item_rows
+    box
     kaki
     repeater
   end
@@ -42,10 +42,15 @@ class StorageRequestPdf < Prawn::Document
     text "Request Date \: #{@storage_request.created_at.strftime("%d/%m/%Y")}", size: 10
     text "Total Number of Box(s) \: #{@storage_request.packages.count}", size: 10
 
+    #move_down 20
+
+    text "Store \: #{@storage_request.warehouse.name}", style: :bold, size: 14, align: :center
+
     move_down 20
 
     table box_rows, :width => 550 do
       row(0).font_style = :bold
+      #columns(1..3).align = :center
       columns(1..5).align = :center
       columns(0..5).size = 10
       self.row_colors = ["DDDDDD", "FFFFFF"]
@@ -54,56 +59,40 @@ class StorageRequestPdf < Prawn::Document
   end
 
   def box_rows
-    [["Box Name", "Barcode ID"]] +
+    [["Box Name", "Floor", "Bay", "Level", "Slot", "Barcode ID"]] +
     @storage_request.packages.map do |package|
-      [package.reference_id, package.barcode]
+      @floor = package.slot.level.bay.floor.name
+      @bay = package.slot.level.bay.name
+      @level = package.slot.level.name
+      @slot = package.slot.name
+      [package.reference_id, @floor, @bay, @level, @slot, package.barcode]
     end
   end
 
-  def item_rows
-    move_down 20
-    @storage_request.packages.map do |package|
-      start_new_page
-      move_down 20
-      font "#{Rails.root}/app/assets/fonts/3OF9.TTF" do
-        text "#{package.barcode}", size: 24, align: :center
-      end
-      move_down 5
-      text "#{package.barcode}", size: 10, align: :center
+  def box
+    width = 180
+    height = 120
 
-      move_down 20
-      text "Box Name \: #{package.reference_id}", size: 16, align: :center
-      move_down 20
-      text "Total Number of Item(s) \# : #{package.items.count}", size: 10
-      move_down 20
+    x = 5
+    y = 180
 
-      rows = [["Item Name"]]
-      package.items.map do |item|
-        rows << [item.name]
-      end
-      #table(rows, :column_widths => [30, 400], :header => true, :row_colors => ["F0F0F0", "FFFFCC"])
-      table rows, :width => 540 do
-        row(0).font_style = :bold
-        columns(0).align = :center
-        columns(0..5).size = 10
-        self.row_colors = ["DDDDDD", "FFFFFF"]
-        self.header = true
-      end
+    stroke_rectangle [x, y], width, height
+    text_box "Confirmed by:", :at => [x +10, y - 10], :width => width - 20, size: 10, align: :center
+    text_box "Name:", :at => [x +10, y - 90], :width => width - 20, size: 10, align: :left
+    text_box "Date  :", :at => [x +10, y - 100], :width => width - 20, size: 10, align: :left
+    text_box "#{@storage_request.user.business_unit}", :at => [x + 10, y - 130], :width => width - 20, size: 10, align: :center, style: :bold
 
-      start_new_page
-      move_down 100
-      font "#{Rails.root}/app/assets/fonts/3OF9.TTF" do
-        text "#{package.barcode}", size: 100, align: :center
-      end
-      move_down 5
-      text "#{package.barcode}", size: 30, align: :center
+    stroke_rectangle [x + 180, y], width, height
+    text_box "Received by:", :at => [x + 180, y - 10], :width => width - 20, size: 10, align: :center
+    text_box "Name:", :at => [x +190, y - 90], :width => width - 20, size: 10, align: :left
+    text_box "Date  :", :at => [x +190, y - 100], :width => width - 20, size: 10, align: :left
+    text_box "Rakyat Niaga Sdn. Bhd.", :at => [x + 180 +10, y - 130], :width => width - 20, size: 10, align: :center, style: :bold
 
-      move_down 50
-      text "#{package.reference_id}", size: 24, align: :center
-      move_down 20
-      text "Total Number of Item(s) \# : #{package.items.count}", size: 24, align: :center
-      move_down 20
-    end
+    stroke_rectangle [x + 360, y], width, height
+    text_box "Transportation:", :at => [x + 360, y - 10], :width => width - 20, size: 10, align: :center
+    text_box "Name:", :at => [x + 370, y - 90], :width => width - 20, size: 10, align: :left
+    text_box "Date  :", :at => [x + 370, y - 100], :width => width - 20, size: 10, align: :left
+    text_box "Company:", :at => [x + 360 + 10, y - 130], :width => width - 20, size: 10, align: :left
   end
 
   def kaki

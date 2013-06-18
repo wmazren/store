@@ -1,16 +1,17 @@
 <div class="widget widget-table">
   <div class="widget-header">
     <span class="icon-list-alt"></span>
-    <h3>Open Retreival Request</h3>
+    <h3>Open Retrieval Request</h3>
   </div> <!-- .widget-header -->
 
   <div class="widget-content">
+    <% if @retrieval_requests_open_admin.count != 0 %>
 
     <div class="accordion" id="basic-accordion">
       <div class="accordion-group">
 
         <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseThree">Open</a>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseThree">Open <span class="badge badge-info"><%= @retrieval_requests_open_admin.count %></span></a>
         </div>
         <div id="collapseThree" class="accordion-body collapse">
           <div class="accordion-inner">
@@ -30,6 +31,7 @@
                     <td><%= retrieval_requests_open_admin.state %></td>
                     <td class="td-actions">
                       <%= link_to "Edit", edit_retrieval_request_path(retrieval_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
+                      <%= link_to "Print", retrieval_request_path(retrieval_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
                     </td>
                   </tr>
                 <% end %>
@@ -39,5 +41,8 @@
         </div>
       </div> <!-- accordion-group -->
     </div> <!-- accordion -->
+    <% else %>
+      <p>There are no open retrieval request.</p>
+    <% end %>
   </div> <!-- .widget-content -->
 </div> <!-- /widget -->

@@ -14,8 +14,11 @@
               <th>Box Name</th>
               <% if current_user.role == "User" %>
                 <th>Item Name</th>
+                <th class="td-actions">Action</th>
+              <% else %>
+                <th>Box Location</th>
               <% end %>
-              <th class="td-actions">Action</th>
+
             </tr>
           </thead>
           <tbody>
@@ -24,18 +27,25 @@
                 <tr>
                   <td><%= package.created_at.strftime("%d %b, %Y") %></td>
                   <td><%= package.reference_id %></td>
+
                   <% if current_user.role == "User" %>
                     <td><%= item.name %></td>
+                    <td class="td-actions">
+                      <% if package.state == "new" %>
+                        <span class="label label-info">Box Storage in progress</span>
+                      <% elsif  package.state == "retrieval_in_progress" %>
+                        <span class="label label-warning">Box Retrieval in progress</span>
+                      <% else %>
+                        <%= link_to "Retrieve this box", retrieval_requests_path(user_id: current_user.id, package_id: package.id), :method => :post, :class => 'btn btn-mini btn-primary' %>
+                      <% end %>
+                    </td>
+                  <% else %>
+                    <td>
+                      <% if package.slot != nil %>
+                        <%= package.slot.level.bay.floor.warehouse.name %>-F<%= package.slot.level.bay.floor.name %>-B<%= package.slot.level.bay.name %>-L<%= package.slot.level.name %>-S<%= package.slot.name %>
+                      <% end %>
+                      </td>
                   <% end %>
-                  <td class="td-actions">
-                    <% if package.state == "new" %>
-                      <span class="label label-info">Box Storage in progress</span>
-                    <% elsif  package.state == "retrieval_in_progress" %>
-                      <span class="label label-warning">Box Retrieval in progress</span>
-                    <% else %>
-                      <%= link_to "Retrieve this box", retrieval_requests_path(user_id: current_user.id, package_id: package.id), :method => :post, :class => 'btn btn-mini btn-primary' %>
-                    <% end %>
-                  </td>
                 </tr>
               <% end %>
             <% end %>

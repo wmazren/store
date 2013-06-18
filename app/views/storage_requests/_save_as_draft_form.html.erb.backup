@@ -24,8 +24,8 @@
               <%= link_to_add_fields "Add Box", f, :packages %>
             </div>
             <div class = "pull-right">
-              <%= f.button :submit, 'Save as Draft', :name => 'draft', :class => 'btn btn-primary', :onmousedown => 'this.title=1;' , :onclick => 'if(this.title!=1){return false;}' %>
-              <%= f.button :submit, 'Submit', :name => 'draft', :class => 'btn btn-danger', :onmousedown => 'this.title=1;' , :onclick => 'if(this.title!=1){return false;}' %>
+              <%= f.button :submit, 'Save as Draft', :name => 'draft', :class => 'btn btn-primary' %>
+              <%= f.button :submit, 'Submit', :name => 'draft', :class => 'btn btn-danger' %>
             </div>
           </div>
 
@@ -74,7 +74,7 @@
                                 <%= builder2.input :name, :wrapper => :prepend, :label => false do %>
                                   <%= builder2.hidden_field :user_id, :value => current_user.id %>
                                   <%= content_tag :span, "Item Name", :class => "add-on" %>
-                                  <%= builder2.input_field :name, :class => 'span8', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
+                                  <%= builder2.input_field :name, :class => 'span8', :style => "text-transform:uppercase" %>
                                   <%= builder2.hidden_field :_destroy %>
                                   <%= link_to "remove", '#', class: "add-on remove_fields" %>
                                 <% end %>

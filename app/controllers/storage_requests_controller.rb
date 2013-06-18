@@ -11,10 +11,17 @@ class StorageRequestsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = StorageRequestPdf.new(@storage_request, view_context)
-        send_data pdf.render, filename: "storage_request_#{@storage_request.user.full_name}.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
+        if current_user.role == "User"
+          pdf = StorageRequestPdf.new(@storage_request, view_context)
+          send_data pdf.render, filename: "storage_request_#{@storage_request.user.full_name}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+        else
+          pdf = StorageRequestAdminPdf.new(@storage_request, view_context)
+          send_data pdf.render, filename: "storage_request_#{@storage_request.user.full_name}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+        end
       end
     end
   end

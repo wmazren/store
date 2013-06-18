@@ -7,6 +7,15 @@
 
       def show
         @retrieval_request = RetrievalRequest.find(params[:id])
+        respond_to do |format|
+          format.html
+          format.pdf do
+              pdf = RetrievalRequestAdminPdf.new(@retrieval_request, view_context)
+              send_data pdf.render, filename: "retrieval_request_#{@retrieval_request.user.full_name}.pdf",
+                                    type: "application/pdf",
+                                    disposition: "inline"
+          end
+        end
       end
 
       def create

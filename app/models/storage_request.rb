@@ -4,6 +4,7 @@ class StorageRequest < ActiveRecord::Base
   belongs_to :warehouse
 
   after_update :assign_slot
+  after_update :check_status
 
   # state
   state_machine :initial => :new do
@@ -17,9 +18,9 @@ class StorageRequest < ActiveRecord::Base
   end
 
   # submit_state
-  state_machine  :submit_state, :initial => :new_storage_request do
+  state_machine  :submit_state, :initial => :submit do
     event :drafted do
-      transition :new_storage_request => :draft
+      transition :submit => :draft
     end
 
     event :submited do
@@ -48,6 +49,14 @@ class StorageRequest < ActiveRecord::Base
           find_slot.package_id = package.id
           find_slot.save
         end
+      end
+    end
+  end
+
+  def check_status
+    if self.state == "closed"
+      self.packages.each do |package|
+        package.store
       end
     end
   end

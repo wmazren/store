@@ -5,12 +5,13 @@
   </div> <!-- .widget-header -->
 
   <div class="widget-content">
+    <% if @storage_requests_open_admin.count != 0 %>
 
     <div class="accordion" id="basic-accordion">
       <div class="accordion-group">
 
         <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseTwo">Open</a>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseTwo">Open <span class="badge badge-info"><%= @storage_requests_open_admin.count %></span></a>
         </div>
         <div id="collapseTwo" class="accordion-body collapse">
           <div class="accordion-inner">
@@ -32,6 +33,9 @@
                     <td><%= storage_requests_open_admin.state.humanize %></td>
                     <td class="td-actions">
                       <%= link_to "Edit", edit_storage_request_path(storage_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
+                      <% if storage_requests_open_admin.warehouse_id != nil  %>
+                        <%= link_to "Print", storage_request_path(storage_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
+                      <% end %>
                     </td>
                   </tr>
                 <% end %>
@@ -42,5 +46,8 @@
 
       </div> <!-- accordion-group -->
     </div> <!-- accordion -->
+    <% else %>
+      <p>There are no open storage request.</p>
+    <% end %>
   </div> <!-- .widget-content -->
 </div> <!-- /widget -->

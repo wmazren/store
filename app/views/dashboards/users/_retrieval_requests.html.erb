@@ -1,7 +1,7 @@
 <div class="widget widget-table">
   <div class="widget-header">
     <span class="icon-list-alt"></span>
-    <h3>Open Retreival Request</h3>
+    <h3>Open Retrieval Request</h3>
   </div> <!-- .widget-header -->
 
   <div class="widget-content">
@@ -10,7 +10,7 @@
       <div class="accordion-group">
 
         <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseThree">Open</a>
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseThree">Open <span class="badge badge-info"><%= @retrieval_requests_open.count %> </span></a>
         </div>
         <div id="collapseThree" class="accordion-body collapse">
           <div class="accordion-inner">
