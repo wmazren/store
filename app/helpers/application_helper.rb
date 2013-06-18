@@ -1,13 +1,4 @@
 module ApplicationHelper
-  require 'barby'
-  require 'barby/barcode/code_39'
-  require 'barby/outputter/prawn_outputter'
-
-  def bcode
-    outputter = Barby::PrawnOutputter.new('qazwsxedc')
-    doc = outputter.to_pdf()
-  end
-
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join

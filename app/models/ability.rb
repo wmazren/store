@@ -10,6 +10,7 @@ class Ability
           can :manage, StorageRequest
           can :manage, RetrievalRequest
           can :manage, Package
+          can :manage, Warehouse
         end
 
         if user.role == "Admin"
@@ -18,6 +19,7 @@ class Ability
             can :manage, StorageRequest
             can :manage, RetrievalRequest
             can :manage, Package
+            can :manage, Warehouse
         end
 
         if user.role == "User"
