@@ -15,9 +15,8 @@
           <%= link_to "Edit / Submit", edit_storage_request_path(@storage_request), :class => 'btn btn-primary' %>
         <% else %>
           <p><b>Status: </b><%= @storage_request.state %></p>
+          <p><%= link_to "Printable (PDF)", storage_request_path(@storage_request, format: "pdf") %></p>
         <% end %>
-
-        <p><%= link_to "Printable (PDF)", storage_request_path(@storage_request, format: "pdf") %></p>
       </div>
     </div>
   </div>
