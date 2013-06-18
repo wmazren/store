@@ -23,6 +23,9 @@ jQuery ->
 
    # this statement adds the new item fieldset to the well div
    $('#' + accordionID).children('.well').append($(this).data('fields').replace(regexp, time))
+
+   $('#' + accordionID).children('.well').find('.item-textbox').focus();
+
    event.preventDefault()
 
  $('form').on 'click', '.add_fields', (event) ->
