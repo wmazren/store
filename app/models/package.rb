@@ -1,8 +1,8 @@
 class Package < ActiveRecord::Base
   belongs_to :user
-  belongs_to :storage_request
+  belongs_to :storage_request, :inverse_of => :packages
   has_many :retrieval_requests
-  has_many :items
+  has_many :items, :inverse_of => :package
   has_one :slot
 
   after_create :assign_barcode
@@ -22,6 +22,7 @@ class Package < ActiveRecord::Base
   end
 
   validates :reference_id, :items, :presence => true
+  # validates_associated :items, :presence => true
 
   accepts_nested_attributes_for :items, allow_destroy: true
 

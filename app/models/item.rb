@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   belongs_to :user
-  belongs_to :package
+  belongs_to :package, :inverse_of => :items
 
   validates :name, :presence => true
 

@@ -1,6 +1,7 @@
 class StorageRequest < ActiveRecord::Base
   belongs_to :user
-  has_many :packages
+  has_many :packages, :inverse_of => :storage_request
+
   belongs_to :warehouse
 
   after_update :assign_slot
@@ -33,6 +34,7 @@ class StorageRequest < ActiveRecord::Base
   end
 
   validates :packages, :presence => true
+  # validates_associated :packages, :presence => true
 
   accepts_nested_attributes_for :packages, :allow_destroy => true
 
