@@ -5,6 +5,19 @@ class WarehousesController < ApplicationController
   def index
   end
 
+  def show
+    @warehouse = Warehouse.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+          pdf = WarehousePdf.new(@warehouse, view_context)
+          send_data pdf.render, filename: "warehouse_#{@warehouse.name}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
+    end
+  end
+
   def new
     @warehouse = Warehouse.new
   end
