@@ -39,9 +39,9 @@ class WarehousePdf < Prawn::Document
     @floors = @warehouse.floors
     @floors.reverse_each do |floor|
       move_down 20
-      text "Floor" + floor.name, size: 14, style: :bold
-      rows = [["Capacity", "Occupied", "Free"]]
-      rows << [helpers.pluralize(floor.slots.size, "Slot"), helpers.pluralize(floor.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(floor.slots.where(:state => "available").size, "Slot")]
+      text "Floor " + floor.name, size: 14, style: :bold
+      rows = [["Bays", "Capacity", "Occupied", "Free"]]
+      rows << [helpers.pluralize(floor.bays.size, "Bays"), helpers.pluralize(floor.slots.size, "Slot"), helpers.pluralize(floor.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(floor.slots.where(:state => "available").size, "Slot")]
 
       table rows, :width => 550 do
         row(0).font_style = :bold
