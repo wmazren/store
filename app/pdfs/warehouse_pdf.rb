@@ -5,7 +5,8 @@ class WarehousePdf < Prawn::Document
     @warehouse = warehouse
     @view = view
     logo
-    list_warehouse
+    list_warehouse_summary
+    list_floors
     kaki
     repeater
   end
@@ -14,13 +15,13 @@ class WarehousePdf < Prawn::Document
     logopath =  "#{Rails.root}/app/assets/images/logo.png"
     image logopath, :width => 125, :height => 23
     move_down 20
-    text "Warehouse Summary", size: 16, style: :bold
+    text @warehouse.name + " Warehouse Summary", size: 16, style: :bold
     move_down 10
   end
 
-  def list_warehouse
-    rows = [["Store Name", "Floors", "Capacity", "Occupied", "Free"]]
-    rows << [@warehouse.name, helpers.pluralize(@warehouse.floors.size, "Floor"), helpers.pluralize(@warehouse.slots.size, "Slot"), helpers.pluralize(@warehouse.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(@warehouse.slots.where(:state => "available").size, "Slot")]
+  def list_warehouse_summary
+    rows = [["Floors", "Capacity", "Occupied", "Free"]]
+    rows << [helpers.pluralize(@warehouse.floors.size, "Floor"), helpers.pluralize(@warehouse.slots.size, "Slot"), helpers.pluralize(@warehouse.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(@warehouse.slots.where(:state => "available").size, "Slot")]
     #table(rows, :column_widths => [], :header => true, :row_colors => ["F0F0F0", "FFFFCC"])
     table rows, :width => 550 do
       #:column_widths => [], :header => true, :row_colors => ["F0F0F0", "FFFFCC"])
@@ -31,6 +32,24 @@ class WarehousePdf < Prawn::Document
       self.row_colors = ["DDDDDD", "FFFFFF"]
       self.header = true
     end
+  end
+
+  def list_floors
+    move_down 20
+    @floors = @warehouse.floors
+    @floors.reverse_each do |floor|
+      text "Floor" + floor.name, size: 14, style: :bold
+      #rows = [["Capacity", "Occupied", "Free"]]
+      #rows << [helpers.pluralize(floor.warehouse.slots(where.size, "Slot"), helpers.pluralize(floor.warehouse.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(floor.bays.levels.slots.where(:state => "available").size, "Slot")]
+    end
+
+   # table rows, :width => 550 do
+    #  row(0).font_style = :bold
+     # columns(1..5).align = :center
+      #columns(0..5).size = 10
+     # self.row_colors = ["DDDDDD", "FFFFFF"]
+     # self.header = true
+    #end
   end
 
   def kaki

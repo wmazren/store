@@ -22,8 +22,8 @@ class WarehousesController < ApplicationController
     @warehouses = Warehouse.all
     respond_to do |format|
       format.pdf do
-          pdf = WarehousePdf.new(@warehouse, view_context)
-          send_data pdf.render, filename: "warehouse_#{@warehouse.name}.pdf",
+          pdf = WarehouseShowAllPdf.new(@warehouses, view_context)
+          send_data pdf.render, filename: "warehouse_show_all.pdf",
                                 type: "application/pdf",
                                 disposition: "inline"
       end
