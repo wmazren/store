@@ -35,21 +35,23 @@ class WarehousePdf < Prawn::Document
   end
 
   def list_floors
-    move_down 20
+
     @floors = @warehouse.floors
     @floors.reverse_each do |floor|
+      move_down 20
       text "Floor" + floor.name, size: 14, style: :bold
-      #rows = [["Capacity", "Occupied", "Free"]]
-      #rows << [helpers.pluralize(floor.warehouse.slots(where.size, "Slot"), helpers.pluralize(floor.warehouse.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(floor.bays.levels.slots.where(:state => "available").size, "Slot")]
-    end
+      rows = [["Capacity", "Occupied", "Free"]]
+      rows << [helpers.pluralize(floor.slots.size, "Slot"), helpers.pluralize(floor.slots.where(:state => "assigned").size, "Slot"), helpers.pluralize(floor.slots.where(:state => "available").size, "Slot")]
 
-   # table rows, :width => 550 do
-    #  row(0).font_style = :bold
-     # columns(1..5).align = :center
-      #columns(0..5).size = 10
-     # self.row_colors = ["DDDDDD", "FFFFFF"]
-     # self.header = true
-    #end
+      table rows, :width => 550 do
+        row(0).font_style = :bold
+        columns(1..5).align = :center
+        columns(0..5).size = 10
+        self.row_colors = ["DDDDDD", "FFFFFF"]
+        self.header = true
+      end
+
+    end
   end
 
   def kaki
