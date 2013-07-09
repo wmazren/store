@@ -11,8 +11,11 @@ Store::Application.routes.draw do
   #devise_for :users
   resources :users
 
-  resources :warehouses
-
+  resources :warehouses do
+    collection do
+      get 'show_all'
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

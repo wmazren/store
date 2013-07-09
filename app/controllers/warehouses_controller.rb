@@ -18,6 +18,18 @@ class WarehousesController < ApplicationController
     end
   end
 
+  def show_all
+    @warehouses = Warehouse.all
+    respond_to do |format|
+      format.pdf do
+          pdf = WarehousePdf.new(@warehouse, view_context)
+          send_data pdf.render, filename: "warehouse_#{@warehouse.name}.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
+    end
+  end
+
   def new
     @warehouse = Warehouse.new
   end
