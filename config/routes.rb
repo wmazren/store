@@ -9,13 +9,20 @@ Store::Application.routes.draw do
 
   devise_for :users, :path_prefix => 'd'
   #devise_for :users
-  resources :users
+  #resources :users
 
   resources :warehouses do
     collection do
       get 'show_all'
     end
   end
+
+  resources :users do
+    collection do
+      get 'show_all'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

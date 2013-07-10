@@ -9,6 +9,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def show_all
+    @users = User.all
+    respond_to do |format|
+      format.pdf do
+          pdf = UserShowAllPdf.new(@users, view_context)
+          send_data pdf.render, filename: "user_show_all.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
+    end
+  end
+
   def new
     @user = User.new
   end
