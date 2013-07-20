@@ -26,6 +26,19 @@ class StorageRequestsController < ApplicationController
     end
   end
 
+  def show_all
+    @storage_requests = StorageRequest.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+          pdf = StorageRequestShowAllPdf.new(@storage_requests, view_context)
+          send_data pdf.render, filename: "storage_requests_show_all.pdf",
+                                type: "application/pdf",
+                                disposition: "inline"
+      end
+    end
+  end
+
   def new
     @storage_request = StorageRequest.new
   end

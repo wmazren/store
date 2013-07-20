@@ -11,7 +11,11 @@ class UsersController < ApplicationController
 
   def show_all
     @users = User.all
+    @users_admin = User.where(:user_type => "Admin")
+    @users_hq = User.where(:user_type => "HQ")
+    @users_branch = User.where(:user_type => "Branch")
     respond_to do |format|
+      format.html
       format.pdf do
           pdf = UserShowAllPdf.new(@users, view_context)
           send_data pdf.render, filename: "user_show_all.pdf",

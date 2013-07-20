@@ -10,8 +10,3 @@ class Floor < ActiveRecord::Base
   accepts_nested_attributes_for :bays, :allow_destroy => true
 end
 
-
-#document - warehouse
-#section - floor
-#paragraph -  bay
-

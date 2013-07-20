@@ -17,6 +17,7 @@ gem 'jquery-datatables-rails'
 gem 'jquery-ui-rails'
 gem 'state_machine'
 gem 'prawn'
+gem 'paper_trail'
 
 gem 'quiet_assets', :group => :development
 gem 'thin'

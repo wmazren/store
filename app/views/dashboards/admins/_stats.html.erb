@@ -1,5 +1,6 @@
 <div class="row">
   <div class="span12">
+    <h4>Storage Request</h4>
     <div class="widget big-stats-container stacked">
       <div class="widget-content">
         <div id="big_stats" class="cf">
@@ -9,18 +10,39 @@
           </div> <!-- .stat -->
 
           <div class="stat">
+            <h4>Storage Request - New</h4>
+            <span class="value"><%= @storage_requests_new_admin.count %></span>
+          </div> <!-- .stat -->
+
+          <div class="stat">
+            <h4>Storage Request - In Progress</h4>
+            <span class="value"><%= @storage_requests_in_progress_admin.count %></span>
+          </div> <!-- .stat -->
+        </div>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span12 -->
+</div> <!-- /row -->
+
+<div class="row">
+  <div class="span12">
+    <h4>Retrieval Request</h4>
+    <div class="widget big-stats-container stacked">
+      <div class="widget-content">
+        <div id="big_stats" class="cf">
+          <div class="stat">
             <h4>Open Retrieval Request</h4>
             <span class="value"><%= @retrieval_requests_open_admin.count %></span>
           </div> <!-- .stat -->
 
           <div class="stat">
-            <h4>Something Else</h4>
-            <span class="value">x</span>
+            <h4>Retrieval Request - New</h4>
+            <span class="value"><%= @retrieval_requests_new_admin.count %></span>
           </div> <!-- .stat -->
 
           <div class="stat">
-            <h4>Something Else</h4>
-            <span class="value">x</span>
+            <h4>Retrieval Request - In Progress</h4>
+            <span class="value"><%= @retrieval_requests_in_progress_admin.count %></span>
           </div> <!-- .stat -->
         </div>
       </div> <!-- /widget-content -->

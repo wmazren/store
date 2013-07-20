@@ -1,5 +1,9 @@
 Store::Application.routes.draw do
-  resources :storage_requests
+  resources :storage_requests do
+    collection do
+        get 'show_all'
+    end
+  end
 
   resources :retrieval_requests
 
