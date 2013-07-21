@@ -6,5 +6,7 @@ class CreateFloors < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :floors, :warehouse_id
   end
 end

@@ -8,5 +8,7 @@ class CreateBays < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :bays, :floor_id
   end
 end

@@ -56,7 +56,7 @@ class StorageRequestPdf < Prawn::Document
   def box_rows
     [["Box Name", "Barcode ID"]] +
     @storage_request.packages.map do |package|
-      [package.reference_id, package.barcode]
+      [package.name, package.barcode]
     end
   end
 
@@ -72,7 +72,7 @@ class StorageRequestPdf < Prawn::Document
       text "#{package.barcode}", size: 10, align: :center
 
       move_down 20
-      text "Box Name \: #{package.reference_id}", size: 16, align: :center
+      text "Box Name \: #{package.name}", size: 16, align: :center
       move_down 20
       text "Total Number of Item(s) \# : #{package.items.count}", size: 10
       move_down 20
@@ -99,7 +99,7 @@ class StorageRequestPdf < Prawn::Document
       text "#{package.barcode}", size: 30, align: :center
 
       move_down 50
-      text "#{package.reference_id}", size: 24, align: :center
+      text "#{package.name}", size: 24, align: :center
       move_down 20
       text "Total Number of Item(s) \# : #{package.items.count}", size: 24, align: :center
       move_down 20

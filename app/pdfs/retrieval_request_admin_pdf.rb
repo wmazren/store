@@ -45,7 +45,7 @@ class RetrievalRequestAdminPdf < Prawn::Document
     text "Request Date \: #{@retrieval_request.created_at.strftime("%d/%m/%Y")}", size: 10
     move_down 20
     rows = [["Box Name", "Floor", "Bay", "Level", "Slot", "Barcode ID"]]
-    rows << [@retrieval_request.package.reference_id, @retrieval_request.package.slot.level.bay.floor.name, @retrieval_request.package.slot.level.bay.name, @retrieval_request.package.slot.level.name, @retrieval_request.package.slot.name, @retrieval_request.package.barcode]
+    rows << [@retrieval_request.package.name, @retrieval_request.package.slot.level.bay.floor.name, @retrieval_request.package.slot.level.bay.name, @retrieval_request.package.slot.level.name, @retrieval_request.package.slot.name, @retrieval_request.package.barcode]
     #table(rows, :column_widths => [], :header => true, :row_colors => ["F0F0F0", "FFFFCC"])
     table rows, :width => 550 do
       #:column_widths => [], :header => true, :row_colors => ["F0F0F0", "FFFFCC"])

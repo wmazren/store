@@ -30,7 +30,7 @@
               <% if current_user.role == "Admin" %>
                 <td><%= retrieval_request.user.full_name %></td>
               <% end %>
-              <td><%= retrieval_request.package.reference_id %></td>
+              <td><%= retrieval_request.package.name %></td>
               <td><%= retrieval_request.state %></td>
             </tr>
             <% end %>

@@ -21,17 +21,17 @@ class Package < ActiveRecord::Base
     end
   end
 
-  validates :reference_id, :items, :presence => true
+  validates :name, :items, :presence => true
   # validates_associated :items, :presence => true
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
-  attr_accessible :reference_id, :user_id, :state, :items_attributes, :barcode
+  attr_accessible :name, :user_id, :state, :items_attributes, :barcode
 
   before_validation :uppercase_fields
 
   def uppercase_fields
-    self.reference_id.upcase!
+    self.name.upcase!
   end
 
   def assign_barcode

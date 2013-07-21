@@ -25,7 +25,7 @@
                 <% @retrieval_requests_open.each do |retrieval_requests_open| %>
                   <tr>
                     <td><%= retrieval_requests_open.created_at.strftime("%d %b, %Y") %></td>
-                    <td><%= retrieval_requests_open.package.reference_id %></td>
+                    <td><%= retrieval_requests_open.package.name %></td>
                     <td><%= retrieval_requests_open.state %></td>
                   </tr>
                 <% end %>

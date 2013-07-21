@@ -65,7 +65,7 @@ class StorageRequestAdminPdf < Prawn::Document
       @bay = package.slot.level.bay.name
       @level = package.slot.level.name
       @slot = package.slot.name
-      [package.reference_id, @floor, @bay, @level, @slot, package.barcode]
+      [package.name, @floor, @bay, @level, @slot, package.barcode]
     end
   end
 

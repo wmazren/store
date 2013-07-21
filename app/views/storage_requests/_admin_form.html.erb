@@ -68,7 +68,7 @@
                   <tbody>
                   <% @storage_request.packages.each do |package| %>
                     <tr>
-                      <td><%= package.reference_id %></td>
+                      <td><%= package.name %></td>
                       <td>
                         <% if package.slot != nil %>
                           <%= package.slot.level.bay.floor.warehouse.name %>-F<%= package.slot.level.bay.floor.name %>-B<%= package.slot.level.bay.name %>-L<%= package.slot.level.name %>-S<%= package.slot.name %>
