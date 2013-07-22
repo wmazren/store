@@ -8,7 +8,7 @@ class StorageRequestPdf < Prawn::Document
     user_info
     list_packages
     item_rows
-    kaki
+    #kaki
     repeater
   end
 
@@ -63,7 +63,7 @@ class StorageRequestPdf < Prawn::Document
   def item_rows
     move_down 20
     @storage_request.packages.map do |package|
-      start_new_page
+      start_new_page(:layout => :portrait)
       move_down 20
       font "#{Rails.root}/app/assets/fonts/3OF9.TTF" do
         text "#{package.barcode}", size: 24, align: :center
@@ -90,7 +90,7 @@ class StorageRequestPdf < Prawn::Document
         self.header = true
       end
 
-      start_new_page
+      start_new_page(:layout => :landscape)
       move_down 100
       font "#{Rails.root}/app/assets/fonts/3OF9.TTF" do
         text "#{package.barcode}", size: 100, align: :center
@@ -113,6 +113,7 @@ class StorageRequestPdf < Prawn::Document
   def repeater
     repeat(:all) do
       draw_text "Rakyat Niaga Sdn. Bhd. | Store 1.0", :at => bounds.bottom_left, size: 8
+      number_pages "<page>", { :start_count_at => 0, :page_filter => :all, :at => bounds.bottom_left, :align => :right, size: 8 }
     end
   end
 end
