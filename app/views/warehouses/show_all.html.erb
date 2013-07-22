@@ -25,7 +25,7 @@
                 <td><%= pluralize(warehouse.floors.size, "Floor") %></td>
                 <td><%= pluralize(warehouse.slots.size, "Slot") %></td>
                 <td><%= pluralize(warehouse.slots.where(:state => "assigned").size, "Slot") %></td>
-                <td><%= pluralize(warehouse.slots.where(:state => "available").size, "Slot") %></td>
+                <td><%= pluralize(warehouse.slots.where(:state => "available").size, "Slot") %> (<%=  number_to_percentage((warehouse.slots.where(:state => "available").size).to_f / warehouse.slots.size) %> free)</td>
               </tr>
             <% end %>
           </tbody>

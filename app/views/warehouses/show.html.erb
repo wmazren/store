@@ -4,11 +4,6 @@
       <div class="widget-content">
         <div id="big_stats" class="cf">
           <div class="stat">
-            <h4>Total Number Floors</h4>
-            <span class="value"><%= @warehouse.floors.size %></span>
-          </div> <!-- .stat -->
-
-          <div class="stat">
             <h4>Total Number of Bays</h4>
             <span class="value"><%= @warehouse.bays.size %></span>
           </div> <!-- .stat -->
@@ -20,7 +15,7 @@
 
           <div class="stat">
             <h4>Total Number of Slots (Free)</h4>
-            <span class="value"><%= @warehouse.slots.where(:state => "available").size %></span>
+            <span class="value"><%= @warehouse.slots.where(:state => "available").size %> (<%= number_to_percentage((@warehouse.slots.where(:state => "available").size).to_f /  @warehouse.slots.size) %>) </span>
           </div> <!-- .stat -->
         </div>
       </div> <!-- /widget-content -->
@@ -57,7 +52,7 @@
               <td><%= pluralize(floor.bays.size, "Bay") %></td>
               <td><%= pluralize(floor.slots.size, "Slot") %></td>
               <td><%= pluralize(floor.slots.where(:state => "assigned").size, "Slot") %></td>
-              <td><%= pluralize(floor.slots.where(:state => "available").size, "Slot") %></td>
+              <td><%= pluralize(floor.slots.where(:state => "available").size, "Slot") %> (<%=  number_to_percentage((floor.slots.where(:state => "available").size).to_f / floor.slots.size) %> free)</td>
             </tr>
             <% end %>
           </tbody>
