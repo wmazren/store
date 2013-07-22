@@ -52,7 +52,7 @@
               <td><%= pluralize(floor.bays.size, "Bay") %></td>
               <td><%= pluralize(floor.slots.size, "Slot") %></td>
               <td><%= pluralize(floor.slots.where(:state => "assigned").size, "Slot") %></td>
-              <td><%= pluralize(floor.slots.where(:state => "available").size, "Slot") %> (<%=  number_to_percentage((floor.slots.where(:state => "available").size).to_f / floor.slots.size) %> free)</td>
+              <td><%= pluralize(floor.slots.where(:state => "available").size, "Slot") %> (<%=  number_to_percentage((floor.slots.where(:state => "available").size).to_f / floor.slots.size.to_f) %> free)</td>
             </tr>
             <% end %>
           </tbody>
