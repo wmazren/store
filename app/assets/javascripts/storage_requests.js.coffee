@@ -1,4 +1,5 @@
 jQuery ->
+
  $('form').on 'click', '.remove_fields', (event) ->
    $(this).prev('input[type=hidden]').val('1')
    # alert($(this).prev().attr("id"));
@@ -25,6 +26,7 @@ jQuery ->
    $('#' + accordionID).children('.well').append($(this).data('fields').replace(regexp, time))
 
    $('#' + accordionID).children('.well').find('.item-textbox').focus();
+   $('.item-date').datepicker()
 
    event.preventDefault()
 

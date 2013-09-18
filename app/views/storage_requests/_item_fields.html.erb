@@ -1,5 +1,6 @@
-<div class="alert alert-info">
-    <fieldset>
+
+<fieldset>
+    <div class="alert alert-info">
       <%= f.input :name, :wrapper => :prepend, :label => false do %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= content_tag :span, "Item Name", :class => "add-on" %>
@@ -8,10 +9,10 @@
         <%= link_to "remove", '#', class: "add-on remove_fields" %><br><br>
 
         <%= content_tag :span, "Item Date", :class => "add-on" %>
-        <%= f.input_field :item_date %><br><br>
-
+        <%= f.text_field :item_date, :class => "item-date", :style => "margin-right: 10px;" %>
         <%= content_tag :span, "Item Type", :class => "add-on" %>
         <%= f.input_field :item_type,  :collection => [ "Type 1", "Type 2", "Type 3", "Type 4", "Type 5" ], :style => "text-transform:uppercase" %>
       <% end %>
-    </fieldset>
-</div>
+  </div>
+</fieldset>
+
