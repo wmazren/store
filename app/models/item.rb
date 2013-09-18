@@ -3,8 +3,10 @@ class Item < ActiveRecord::Base
   belongs_to :package, :inverse_of => :items
 
   validates :name, :presence => true
+  validates :item_date, :presence => true
+  validates :item_type, :presence => true
 
-  attr_accessible :name, :user_id
+  attr_accessible :name, :user_id, :item_date, :item_type
 
   before_validation :uppercase_fields
 

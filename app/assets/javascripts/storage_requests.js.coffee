@@ -64,4 +64,3 @@ jQuery ->
    $(this).removeClass('icon-chevron-up')
    $(this).addClass('icon-chevron-down')
    event.preventDefault()
-

@@ -1,9 +1,17 @@
-<fieldset>
-  <%= f.input :name, :wrapper => :prepend, :label => false do %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= content_tag :span, "Item Name", :class => "add-on" %>
-    <%= f.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "remove", '#', class: "add-on remove_fields" %>
-  <% end %>
-</fieldset>
+<div class="alert alert-info">
+    <fieldset>
+      <%= f.input :name, :wrapper => :prepend, :label => false do %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= content_tag :span, "Item Name", :class => "add-on" %>
+        <%= f.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "remove", '#', class: "add-on remove_fields" %><br><br>
+
+        <%= content_tag :span, "Item Date", :class => "add-on" %>
+        <%= f.input_field :item_date %><br><br>
+
+        <%= content_tag :span, "Item Type", :class => "add-on" %>
+        <%= f.input_field :item_type,  :collection => [ "Type 1", "Type 2", "Type 3", "Type 4", "Type 5" ], :style => "text-transform:uppercase" %>
+      <% end %>
+    </fieldset>
+</div>

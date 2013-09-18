@@ -56,16 +56,23 @@
                         <div id="<%= builder1.to_s.gsub(/[^0-9a-z ]/i, '') %>" class="accordion-body collapse">
                           <div class="well" style="background-color:transparent; border:none; margin-bottom:0px" >
                             <%= builder1.fields_for :items do |builder2| %>
+                              <div class="alert alert-info">
+                                <fieldset>
+                                  <%= builder2.input :name, :wrapper => :prepend, :label => false do %>
+                                    <%= builder2.hidden_field :user_id, :value => current_user.id %>
+                                    <%= content_tag :span, "Item Name", :class => "add-on" %>
+                                    <%= builder2.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
+                                    <%= builder2.hidden_field :_destroy %>
+                                    <%= link_to "remove", '#', class: "add-on remove_fields" %><br><br>
 
-                              <fieldset>
-                                <%= builder2.input :name, :wrapper => :prepend, :label => false do %>
-                                  <%= builder2.hidden_field :user_id, :value => current_user.id %>
-                                  <%= content_tag :span, "Item Name", :class => "add-on" %>
-                                  <%= builder2.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
-                                  <%= builder2.hidden_field :_destroy %>
-                                  <%= link_to "remove", '#', class: "add-on remove_fields" %>
-                                <% end %>
-                              </fieldset>
+                                    <%= content_tag :span, "Item Date", :class => "add-on" %>
+                                    <%= builder2.input_field :item_date %><br><br>
+
+                                    <%= content_tag :span, "Item Type", :class => "add-on" %>
+                                    <%= builder2.input_field :item_type,  :collection => [ "Type 1", "Type 2", "Type 3", "Type 4", "Type 5" ], :style => "text-transform:uppercase" %>
+                                  <% end %>
+                                </fieldset>
+                              </div>
 
                             <% end %>
                           </div>
