@@ -1,17 +1,23 @@
 
 <fieldset>
-    <div class="alert alert-info">
+    <div class="alert alert-info" style="padding-right:10px; padding-top:20px;">
+
+       <div class="span1" style="text-align:right; float:right; margin-top:-15px;">
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "", '#', class: "icon-remove remove_fields", :title => "Remove Box" %>
+      </div>
+
       <%= f.input :name, :wrapper => :prepend, :label => false do %>
+
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= content_tag :span, "Item Name", :class => "add-on" %>
-        <%= f.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
-        <%= f.hidden_field :_destroy %>
-        <%= link_to "remove", '#', class: "add-on remove_fields" %><br><br>
+        <%= f.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %><br><br>
 
-        <%= content_tag :span, "Item Date", :class => "add-on" %>
+        <%= content_tag :span, "Item Date  ", :class => "add-on" %>
         <%= f.text_field :item_date, :class => "item-date", :style => "margin-right: 10px;" %>
         <%= content_tag :span, "Item Type", :class => "add-on" %>
         <%= f.input_field :item_type,  :collection => [ "Type 1", "Type 2", "Type 3", "Type 4", "Type 5" ], :style => "text-transform:uppercase" %>
+
       <% end %>
   </div>
 </fieldset>
