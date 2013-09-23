@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="span4">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-briefcase"></i>
+        <h3>Retrieval Request</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+        <p><b>Box Name: </b><%= @retrieval_request.package.name %></p>
+
+        <p><b>Status: </b><%= @retrieval_request.state %></p>
+
+        <br>
+
+        <p class="text-error"><b>Legend (Status):</b></p>
+        <dl class="dl-horizontal">
+          <dt>New :</dt>
+          <dd>New request.</dd>
+
+          <dt>Pending Collection :</dt>
+          <dd>Request being process and pending transportation to collect boxes from customer.</dd>
+
+          <dt>Collected :</dt>
+          <dd>Boxes has been collected from customer and pending storage.</dd>
+
+          <dt>Stored :</dt>
+          <dd>Boxes has been stored.</dd>
+
+          <dt>Closed :</dt>
+          <dd>Request completed.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="span8">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-file"></i>
+        <h3><%= @retrieval_request.package.name %></h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Item Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @retrieval_request.package.items.each do |item| %>
+                <tr><td><%= item.name %></td></tr>
+              <% end %>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+  </div> <!-- /span-8 -->
+</div> <!-- /row -->

@@ -10,26 +10,38 @@
         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="admin_users">
           <thead>
             <tr>
-              <th>Request Date</th>
               <th>Box Name</th>
               <% if current_user.role == "User" %>
                 <th>Item Name</th>
-                <th class="td-actions">Action</th>
               <% else %>
-                <th>Box Location</th>
+                <th>Customer</th>
               <% end %>
-
+              <th>Box Location</th>
+              <th class="td-actions">Action</th>
             </tr>
           </thead>
           <tbody>
             <% @packages.each do |package| %>
               <% package.items.each do |item| %>
                 <tr>
-                  <td><%= package.created_at.strftime("%d %b, %Y") %></td>
                   <td><%= package.name %></td>
-
                   <% if current_user.role == "User" %>
                     <td><%= item.name %></td>
+                    <td>
+                      <% if package.slot != nil %>
+                        <%= package.slot.level.bay.floor.warehouse.name %>
+                      <% end %>
+                    </td>
+                  <% else %>
+                    <td><%= package.user.business_unit %></td>
+                    <td>
+                      <% if package.slot != nil %>
+                        <%= package.slot.level.bay.floor.warehouse.name %>-F<%= package.slot.level.bay.floor.name %>-B<%= package.slot.level.bay.name %>-L<%= package.slot.level.name %>-S<%= package.slot.name %>
+                      <% end %>
+                    </td>
+                  <% end %>
+
+                  <% if current_user.role == "User" %>
                     <td class="td-actions">
                       <% if package.state == "new" %>
                         <span class="label label-info">Box Storage in progress</span>
@@ -38,14 +50,10 @@
                       <% else %>
                         <%= link_to "Retrieve this box", retrieval_requests_path(user_id: current_user.id, package_id: package.id), :method => :post, :class => 'btn btn-mini btn-primary' %>
                       <% end %>
-                    </td>
-                  <% else %>
-                    <td>
-                      <% if package.slot != nil %>
-                        <%= package.slot.level.bay.floor.warehouse.name %>-F<%= package.slot.level.bay.floor.name %>-B<%= package.slot.level.bay.name %>-L<%= package.slot.level.name %>-S<%= package.slot.name %>
-                      <% end %>
                       </td>
-                  <% end %>
+                    <% else %>
+                      <td></td>
+                    <% end %>
                 </tr>
               <% end %>
             <% end %>

@@ -2,21 +2,29 @@ class RetrievalRequest < ActiveRecord::Base
   belongs_to :user
   belongs_to :package
 
-  state_machine :initial => :new do
-    event :started do
-      transition :new => :in_progress
+  state_machine :initial => 'new' do
+    event :aaa do
+      transition 'new' => 'pending retrieval'
     end
 
-    event :delivered do
-      transition :in_progress => :delivered_to_client
+    event :bbb do
+      transition 'pending retrieval' => 'delivered to client'
     end
 
-    event :collected do
-      transition :delivered_to_client => :pending_storage
+    event :ccc do
+      transition 'delivered to client' => 'pending collection'
     end
 
-    event :completed do
-      transition :pending_storage => :closed
+    event :ddd do
+      transition 'pending collection' => 'collected'
+    end
+
+    event :eee do
+      transition 'collected' => 'pending storage'
+    end
+
+    event :fff do
+      transition 'pending storage' => 'closed'
     end
   end
 

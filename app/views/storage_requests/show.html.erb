@@ -15,8 +15,28 @@
           <%= link_to "Edit / Submit", edit_storage_request_path(@storage_request), :class => 'btn btn-primary' %>
         <% else %>
           <p><b>Status: </b><%= @storage_request.state %></p>
-          <p><%= link_to "Printable (PDF)", storage_request_path(@storage_request, format: "pdf") %></p>
+          <p><%= link_to "Printable (PDF)", storage_request_path(@storage_request, format: "pdf"), :class => 'btn btn-mini btn-primary' %></p>
         <% end %>
+
+        <br>
+
+        <p class="text-error"><b>Legend (Status):</b></p>
+        <dl class="dl-horizontal">
+          <dt>New :</dt>
+          <dd>New request.</dd>
+
+          <dt>Pending Collection :</dt>
+          <dd>Request being process and pending transportation to collect boxes from customer.</dd>
+
+          <dt>Collected :</dt>
+          <dd>Boxes has been collected from customer and pending storage.</dd>
+
+          <dt>Stored :</dt>
+          <dd>Boxes has been stored.</dd>
+
+          <dt>Closed :</dt>
+          <dd>Request completed.</dd>
+        </dl>
       </div>
     </div>
   </div>

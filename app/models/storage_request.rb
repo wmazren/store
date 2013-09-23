@@ -10,13 +10,29 @@ class StorageRequest < ActiveRecord::Base
   after_update :check_status
 
   # state
-  state_machine :initial => :new do
-    event :started do
-      transition :new => :in_progress
+  state_machine :state, :initial => 'new' do
+    event :aaa do
+      transition 'new' => 'in progress'
     end
 
-    event :completed do
-      transition :in_progress => :closed
+    event :bbb do
+      transition 'in progress' => 'pending collection'
+    end
+
+    event :ccc do
+      transition 'pending collection' => 'collected'
+    end
+
+    event :ddd do
+      transition 'collected' => 'stored'
+    end
+
+    event :eee do
+      transition 'collected' => 'stored'
+    end
+
+    event :fff do
+      transition 'stored' => 'closed'
     end
   end
 

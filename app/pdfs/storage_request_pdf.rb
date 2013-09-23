@@ -54,9 +54,9 @@ class StorageRequestPdf < Prawn::Document
   end
 
   def box_rows
-    [["Box Name", "Barcode ID"]] +
+    [["Box Name", "Total Items", "Barcode ID"]] +
     @storage_request.packages.map do |package|
-      [package.name, package.barcode]
+      [package.name, package.items.count, package.barcode]
     end
   end
 

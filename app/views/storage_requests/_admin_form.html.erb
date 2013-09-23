@@ -51,7 +51,7 @@
                 </div>
               </div>
 
-              <%= f.input :state, :collection => (StorageRequest.state_machine.states.map &:name) %>
+              <%= f.input :state, :collection => [ "new", "in progress", "pending collection", "collected", "stored", "closed" ] %>
 
               <%= f.association :warehouse %>
 

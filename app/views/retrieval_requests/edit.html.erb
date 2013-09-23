@@ -63,7 +63,7 @@
                 </div>
               </div>
 
-              <%= f.input :state, :collection => (RetrievalRequest.state_machine.states.map &:name) %>
+              <%= f.input :state, :collection => [ "new", "pending retrieval", "delivered to client",  "pending collection", "collected", "pending storage", "closed" ]  %>
             </div>
           </div>
         </div>
