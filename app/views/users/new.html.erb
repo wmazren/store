@@ -21,6 +21,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="account_details">
               <%= f.input :full_name, :required => true, :autofocus => true %>
+              <%= f.input :username, :required => true %>
               <%= f.input :email, :required => true %>
               <%= f.input :position, :required => true %>
               <% if current_user.role == "Super User" %>
