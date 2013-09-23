@@ -4,7 +4,7 @@
 
     <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <div class="login-fields">
-        <%= f.input :username :required => false, :autofocus => true, :placeholder => 'Username', :label => false, :input_html => { :class => 'login username-field' } %>
+        <%= f.input :username, :required => false, :autofocus => true, :placeholder => 'Username', :label => false, :input_html => { :class => 'login username-field' } %>
         <%= f.input :password, :required => false, :placeholder => 'Password', :label => false, :input_html => { :class => 'login password-field' } %>
       </div> <!-- /login-fields -->
 
