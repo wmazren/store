@@ -7,8 +7,14 @@
           <tr width="100%" height="2px">
             <td style="text-align:left " width="90%">
               <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.input :name, placeholder: 'Box name', :label => false, :input_html => { :class => "span9", :style => "background-color: transparent; border: transparent; margin-bottom: 0px; text-transform:uppercase"} %>
+              <div class="form-horizontal">
+                <%= f.input :name, label: 'Box Name', :required => true, :autofocus => true, :input_html => { :class => "span6", :style => "text-transform:uppercase"} %>
+              </div>
+              <div class="form-horizontal">
+                <%= f.input :insurance_value, priority: [ "Low" ], collection: [ "High", "Medium", "Low" ], :required => true %>
+              </div>
             </td>
+
             <td style="text-align:right; control-group{margin-bottom: 0px;}" width="10%">
               <a class="icon-chevron-down icon-shadow" data-toggle="collapse" href="#dyn-id" title="Expand/Collapse Box"></a>
               <%= link_to_add_items "", f, :items %>
