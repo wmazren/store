@@ -26,7 +26,7 @@ class Package < ActiveRecord::Base
 
   accepts_nested_attributes_for :items, allow_destroy: true
 
-  attr_accessible :name, :user_id, :state, :items_attributes, :barcode
+  attr_accessible :name, :user_id, :state, :items_attributes, :barcode, :insurance_value
 
   before_validation :uppercase_fields
 
