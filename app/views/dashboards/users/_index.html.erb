@@ -5,6 +5,15 @@
 <%= render 'dashboards/users/stats' %>
 
 <div class="row">
+  <div class="span6">
+      <%= render 'dashboards/cirque' %>
+  </div>
+  <div class="span6">
+      <%= render 'dashboards/bar_chart' %>
+  </div>
+</div>
+
+<div class="row">
   <div class="span8">
     <%= render 'dashboards/users/storage_requests' %>
     <%= render 'dashboards/users/retrieval_requests' %>
