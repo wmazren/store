@@ -26,7 +26,7 @@ jQuery ->
    $('#' + accordionID).children('.well').append($(this).data('fields').replace(regexp, time))
 
    $('#' + accordionID).children('.well').find('.item-textbox').focus();
-   $('.item-date').datepicker()
+   $('.item-date').datepicker({ dateFormat: 'dd-mm-yy' })
 
    event.preventDefault()
 
