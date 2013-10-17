@@ -11,7 +11,12 @@
                 <%= f.input :name, label: 'Box Name', :required => true, :autofocus => true, :input_html => { :class => "span6", :style => "text-transform:uppercase"} %>
               </div>
               <div class="form-horizontal">
+<<<<<<< HEAD
                 <%= f.input :insurance_value, label: 'Risk Level', priority: [ "Low" ], collection: [ "High", "Medium", "Low" ], :required => true %>
+=======
+                <%= f.input :insurance_value, priority: [ "Low" ], collection: [ "Low", "Medium", "High" ], :required => true, hint:  '*Note: High And Medium Risk Levels Will Incur Additional Insurance Cost' %>
+
+>>>>>>> 20cb01cd8d5e2ac092ace4e6dd7ebdf44a0bd7c2
               </div>
             </td>
 

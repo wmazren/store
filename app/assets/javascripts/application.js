@@ -16,4 +16,6 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery.ui.datepicker
+//= require raphael
+//= require morris
 //= require_tree .
