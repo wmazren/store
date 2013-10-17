@@ -5,12 +5,6 @@
 <%= render 'dashboards/users/stats' %>
 
 <div class="row">
-  <div class="span6">
-      <%= render 'dashboards/line' %>
-  </div>
-</div>
-
-<div class="row">
   <div class="span8">
     <%= render 'dashboards/users/storage_requests' %>
     <%= render 'dashboards/users/retrieval_requests' %>
@@ -20,3 +14,8 @@
   </div> <!-- /span4 -->
 </div> <!-- /row -->
 
+<div class="row">
+  <div class="span12">
+      <%= render 'dashboards/line' %>
+  </div>
+</div>
