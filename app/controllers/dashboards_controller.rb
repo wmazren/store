@@ -18,10 +18,5 @@ class DashboardsController < ApplicationController
     @retrieval_requests_new_admin= RetrievalRequest.where(['state = ?', 'new'])
     @retrieval_requests_in_progress_admin= RetrievalRequest.where(['state = ?', 'in_progress'])
 
-    @storage_requests = StorageRequest.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @storage_requests }
-    end
   end
 end

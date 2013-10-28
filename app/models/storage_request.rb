@@ -56,7 +56,7 @@ class StorageRequest < ActiveRecord::Base
 
   accepts_nested_attributes_for :packages, :allow_destroy => true
 
-  attr_accessible :due_date, :user_id, :state, :packages_attributes, :warehouse_id, :created_at, :id
+  attr_accessible :due_date, :user_id, :state, :packages_attributes, :warehouse_id
 
   private
 

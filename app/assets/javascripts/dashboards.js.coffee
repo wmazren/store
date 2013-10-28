@@ -2,12 +2,12 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-
 jQuery ->
-# if ( $("#storage_requests_chart").length > 0 )
-  Morris.Bar
-    element: 'storage_requests_chart'
-    data: $('#storage_requests_chart').data('storagerequests')
-    xkey: 'created_at'
-    ykeys: ['requests']
-    labels: ['Requests']
+$ ->
+  if $('#storage_requests_chart_container').length > 0
+    Morris.Bar
+      element: 'storage_requests_chart'
+      data: $('#storage_requests_chart').data('storagerequests')
+      xkey: 'created_at'
+      ykeys: ['requests']
+      labels: ['Requests']
