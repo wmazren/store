@@ -8,7 +8,8 @@ module StorageRequestsHelper
       #August, Sept, October
       {
         created_at: date.strftime("%B"),
-        requests: StorageRequest.where("date(created_at) = ?", date).count(:id)
+        requests: StorageRequest.all.group_by { |m| m.created_at.beginning_of_month }.count
+        # requests: StorageRequest.where("date(created_at) = ?", date).count(:id)
         # requests: StorageRequest.where("date(created_at) = ?", date).count
         #requests: StorageRequest.count(:group=>"date_trunc('month', created_at)", :conditions => date)
         #requests: StorageRequest.count(:all, :conditions => date, :group => "DATE_FORMAT(created_at, '%Y-%m')", :order =>"created_at ASC")

@@ -69,6 +69,7 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.7)
+    libv8 (3.16.14.3)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -117,6 +118,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.5)
     ruby-rc4 (0.1.5)
     sass (3.2.7)
     sass-rails (3.2.6)
@@ -133,6 +135,9 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.8)
     state_machine (1.2.0)
+    therubyracer (0.12.0)
+      libv8 (~> 3.16.14.0)
+      ref
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -172,5 +177,6 @@ DEPENDENCIES
   simple_form
   sqlite3
   state_machine
+  therubyracer
   thin
   uglifier (>= 1.0.3)
