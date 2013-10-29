@@ -41,11 +41,14 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "List Storage Requests", storage_requests_path %></li>
                 <li><%= link_to "List Retrieval Requests", retrieval_requests_path %></li>
+                <li><%= link_to "List Box Requests", box_requests_path %></li>
                 <li class="divider"></li>
                 <li><%= link_to "List Boxes and Items", packages_path %></li>
-                <li class="divider"></li>
                 <% if current_user.role == "User" %>
+                  <li class="divider"></li>
                   <li><%= link_to "New Storage Request", new_storage_request_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "New Box Request", new_box_request_path %></li>
                 <% end %>
               </ul>
             </li>

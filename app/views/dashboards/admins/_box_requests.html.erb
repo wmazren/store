@@ -5,6 +5,7 @@
   </div> <!-- .widget-header -->
 
   <div class="widget-content">
+    <% if @box_requests_open_admin.count != 0 %>
 
     <div class="accordion" id="basic-accordion">
       <div class="accordion-group">
@@ -38,5 +39,8 @@
         </div>
       </div> <!-- accordion-group -->
     </div> <!-- accordion -->
+    <% else %>
+      <p>There are no open storage request.</p>
+    <% end %>
   </div> <!-- .widget-content -->
 </div> <!-- /widget -->
