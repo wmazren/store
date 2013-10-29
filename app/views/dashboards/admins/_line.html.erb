@@ -1,0 +1,10 @@
+<div class="widget stacked">
+  <div class="widget-header">
+    <i class="icon-bookmark"></i>
+    <h3>Storage Request Trend</h3>
+  </div> <!-- /widget-header -->
+
+  <div class="widget-content" id="storage_requests_chart_container">
+    <%= content_tag :div, "", id: "storage_requests_chart", data: {storagerequests: storage_requests_chart_data} %>
+  </div>
+</div>
