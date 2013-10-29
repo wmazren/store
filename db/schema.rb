@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008143743) do
+ActiveRecord::Schema.define(:version => 20131029120838) do
 
   create_table "bays", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20131008143743) do
   end
 
   add_index "bays", ["floor_id"], :name => "index_bays_on_floor_id"
+
+  create_table "box_requests", :force => true do |t|
+    t.integer  "quantity"
+    t.integer  "user_id"
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "box_requests", ["user_id"], :name => "index_box_requests_on_user_id"
 
   create_table "floors", :force => true do |t|
     t.string   "name"

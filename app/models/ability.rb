@@ -11,6 +11,7 @@ class Ability
           can :manage, RetrievalRequest
           can :manage, Package
           can :manage, Warehouse
+          can :manage, BoxRequest
         end
 
         if user.role == "Admin"
@@ -20,6 +21,7 @@ class Ability
             can :manage, RetrievalRequest
             can :manage, Package
             can :manage, Warehouse
+            can :manage, BoxRequest
         end
 
         if user.role == "User"
@@ -28,6 +30,7 @@ class Ability
           can :manage, StorageRequest, :user_id => user.id
           can :manage, RetrievalRequest, :user_id => user.id
           can :manage, Package, :user_id => user.id
+          can :manage, BoxRequest, :user_id => user.id
         end
 
     # Define abilities for the passed in user here. For example:

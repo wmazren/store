@@ -6,6 +6,7 @@ Store::Application.routes.draw do
   end
 
   resources :retrieval_requests
+   resources :box_requests
 
   resources :packages
 

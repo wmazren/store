@@ -17,6 +17,5 @@ class DashboardsController < ApplicationController
     @retrieval_requests_open_admin = RetrievalRequest.where(['state <> ?', 'closed'])
     @retrieval_requests_new_admin= RetrievalRequest.where(['state = ?', 'new'])
     @retrieval_requests_in_progress_admin= RetrievalRequest.where(['state = ?', 'in_progress'])
-
   end
 end
