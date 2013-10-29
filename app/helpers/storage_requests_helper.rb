@@ -18,7 +18,6 @@ module StorageRequestsHelper
   end
 
 end
-https://store.rakyatniaga.com
 
 
 #  def storage_requests_chart_data
