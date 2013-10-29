@@ -1,0 +1,45 @@
+<%= simple_form_for(@box_request, :html => { :class => 'form-horizontal' }) do |f| %>
+<div class="row">
+  <div class="span8">
+    <div class="widget stacked ">
+      <div class="widget-header">
+        <i class="icon-edit"></i>
+        <h3>Request for new boxes</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+        <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#box_request" data-toggle="tab">Box Request</a>
+            </li>
+          </ul>
+
+          <br>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="box_request">
+              <%= f.input :quantity, :required => true, :autofocus => true %>
+              <%= f.input :state, :required => true, :collection => [ "new", "in progress", "pending delivery", "delivered", "closed" ] %>
+            </div>
+          </div>
+        </div>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget -->
+  </div> <!-- /span8 -->
+
+  <div class="span4">
+    <div class="widget stacked widget-box">
+      <div class="widget-header">
+        <i class="icon-ok"></i>
+        <h3>Actions</h3>
+      </div> <!-- /widget-header -->
+
+      <div class="widget-content">
+          <%= f.button :submit, 'Submit', :class => 'btn-primary' %>
+          <%= link_to 'Cancel', action: :index, :class => 'btn' %>
+      </div> <!-- /widget-content -->
+    </div> <!-- /widget-box -->
+  </div> <!-- /span4 -->
+</div> <!-- /row -->
+<% end %>

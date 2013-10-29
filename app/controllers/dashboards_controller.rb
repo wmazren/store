@@ -6,6 +6,7 @@ class DashboardsController < ApplicationController
     # User
     @storage_requests_open= StorageRequest.where(['user_id = ? AND  state <> ?', current_user.id, 'closed'])
     @retrieval_requests_open = RetrievalRequest.where(['user_id = ? AND  state <> ?', current_user.id, 'closed'])
+    @box_requests_open = BoxRequest.where(['user_id = ? AND  state <> ?', current_user.id, 'closed'])
     @packages = Package.where(['user_id = ?', current_user.id])
     @storage_requests_draft = StorageRequest.where(:user_id => current_user.id, :submit_state => 'draft')
 
@@ -17,5 +18,7 @@ class DashboardsController < ApplicationController
     @retrieval_requests_open_admin = RetrievalRequest.where(['state <> ?', 'closed'])
     @retrieval_requests_new_admin= RetrievalRequest.where(['state = ?', 'new'])
     @retrieval_requests_in_progress_admin= RetrievalRequest.where(['state = ?', 'in_progress'])
+
+    @box_requests_open_admin = BoxRequest.where(['state <> ?', 'closed'])
   end
 end

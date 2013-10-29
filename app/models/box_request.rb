@@ -1,7 +1,7 @@
 class BoxRequest < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :quantity, :user_id
+  attr_accessible :quantity, :user_id, :state
 
   # state
   state_machine :state, :initial => 'new' do

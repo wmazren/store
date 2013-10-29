@@ -19,4 +19,14 @@ class BoxRequestsController < ApplicationController
       render 'new'
     end
   end
+
+  def update
+    @box_request = BoxRequest.find(params[:id])
+    if @box_request.update_attributes(params[:box_request])
+      flash[:notice] = "Successfully updated box request."
+      redirect_to dashboards_path
+    else
+      render :action => 'edit'
+    end
+  end
 end

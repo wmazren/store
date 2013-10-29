@@ -1,0 +1,39 @@
+<div class="widget widget-table">
+  <div class="widget-header">
+    <span class="icon-list-alt"></span>
+    <h3>Open Box Request</h3>
+  </div> <!-- .widget-header -->
+
+  <div class="widget-content">
+
+    <div class="accordion" id="basic-accordion">
+      <div class="accordion-group">
+
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#basic-accordion" href="#collapseFour">Open <span class="badge badge-info"><%= @box_requests_open.count %> </span></a>
+        </div>
+        <div id="collapseFour" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <table class="table table-bordered table-striped">
+              <thead><tr>
+                <th>Request Date</th>
+                <th>Box Quantity</th>
+                <th>Status</th>
+              </tr></thead>
+
+              <tbody>
+                <% @box_requests_open.each do |box_requests_open| %>
+                  <tr>
+                    <td><%= box_requests_open.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= box_requests_open.quantity %></td>
+                    <td><%= box_requests_open.state %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> <!-- accordion-group -->
+    </div> <!-- accordion -->
+  </div> <!-- .widget-content -->
+</div> <!-- /widget -->
