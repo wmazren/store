@@ -5,6 +5,6 @@
   </div> <!-- /widget-header -->
 
   <div class="widget-content" id="storage_requests_chart_container">
-    <%= content_tag :div, "", id: "storage_requests_chart", data: {storagerequests: storage_requests_chart_data} %>
+    <%= content_tag :div, "", id: "storage_requests_chart", data: {storagerequests: StorageRequest.chart_data} %>
   </div>
 </div>

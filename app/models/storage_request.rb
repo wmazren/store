@@ -81,4 +81,30 @@ class StorageRequest < ActiveRecord::Base
     end
   end
 
+  def self.chart_data(start = 2.months.ago)
+    total_count = total_count_by_month(start)
+
+    ##############################################
+    start = start.to_date.beginning_of_month
+    today = Date.today.beginning_of_month
+    range = (start..today).select {|d| d.day == 1}
+    ##############################################
+
+    range.map do |month|
+      {
+        created_at: month.strftime("%b"),
+        requests: total_count[month.strftime("%-m").to_i] || 0
+      }
+    end
+  end
+
+  def self.total_count_by_month(start)
+    storage_requests = where(created_at: start.beginning_of_month..Time.now)
+    storage_requests = storage_requests.group("MONTH(created_at)")
+    storage_requests = storage_requests.select("MONTH(created_at) as month_created_at , count(*) as total_requests")
+    storage_requests.each_with_object({}) do |storage_request, counts|
+      counts[storage_request.month_created_at] = storage_request.total_requests
+    end
+  end
+
 end

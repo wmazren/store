@@ -11,3 +11,4 @@ $ ->
       xkey: 'created_at'
       ykeys: ['requests']
       labels: ['Requests']
+      xLabelMargin: 10
