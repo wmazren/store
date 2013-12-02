@@ -51,9 +51,9 @@ class UsersController < ApplicationController
       params[:user].delete(:password_confirmation)
     end
 
-    if @user.update_with_password(params[:user])
-    #if @user.update_attributes(params[:user])
-      # sign_in @user, :bypass => true
+    #if @user.update_with_password(params[:user])
+    if @user.update_attributes(params[:user])
+      #sign_in @user, :bypass => true
       flash[:notice] = "Successfully updated user."
       redirect_to dashboards_path
     else

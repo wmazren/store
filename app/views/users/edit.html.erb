@@ -14,6 +14,7 @@
               <a href="#account_details" data-toggle="tab">Account Details</a>
             </li>
             <li><a href="#address" data-toggle="tab">Address</a></li>
+            <li><a href="#password" data-toggle="tab">Reset Password</a></li>
           </ul>
 
           <br>
@@ -33,11 +34,6 @@
               <% if current_user.role == "Admin" %>
                 <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons %>
               <% end %>
-              <% if current_user == @user %>
-                <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-                <%= f.input :password_confirmation, :required => false %>
-                <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-              <% end %>
             </div>
 
             <div class="tab-pane" id="address">
@@ -53,6 +49,21 @@
               <%= f.input :fax, :required => true %>
               <%= f.input :mobile, :required => true %>
             </div>
+
+            <div class="tab-pane" id="password">
+              <div class="alert">
+                <strong>Warning!</strong> You will need to login back to access this application after changing your password.
+              </div>
+              <% if current_user == @user %>
+                <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+                <%= f.input :password_confirmation, :required => false %>
+              <% else %>
+                <div class="alert">
+                  <strong>This is not your account.</strong> You can only change password for your own account.
+                </div>
+              <% end %>
+            </div>
+
           </div>
         </div>
       </div> <!-- /widget-content -->
