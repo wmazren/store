@@ -33,6 +33,11 @@
               <% if current_user.role == "Admin" %>
                 <%= f.input :user_type, :required => true, :collection => [ "Admin", "HQ", "Branch" ], as: :radio_buttons %>
               <% end %>
+              <% if current_user == @user %>
+                <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+                <%= f.input :password_confirmation, :required => false %>
+                <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+              <% end %>
             </div>
 
             <div class="tab-pane" id="address">

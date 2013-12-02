@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :full_name, :business_unit, :role, :active, :email, :password, :password_confirmation, :remember_me,
                              :address1, :address2, :town, :postcode, :state, :phone1, :phone2, :phone3, :fax, :mobile, :user_type, :position,
-                             :username
+                             :username,
+                             :current_password
 
   private
 
