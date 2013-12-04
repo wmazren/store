@@ -8,10 +8,7 @@ class BoxRequestAdminPdf < Prawn::Document
     user_info
     # list_package
     list_request
-    #sub_1
-    box_retrieve
-    #sub_2
-    #box_return
+    box_do
     kaki
     repeater
   end
@@ -75,7 +72,7 @@ class BoxRequestAdminPdf < Prawn::Document
     end
   end
 
-  def box_retrieve
+  def box_do
     width = 180
     height = 120
 
@@ -83,13 +80,13 @@ class BoxRequestAdminPdf < Prawn::Document
     y = 180
 
     stroke_rectangle [x, y], width, height
-    text_box "Confirmed by:", :at => [x +10, y - 10], :width => width - 20, size: 10, align: :center
+    text_box "Received by:", :at => [x +10, y - 10], :width => width - 20, size: 10, align: :center
     text_box "Name:", :at => [x +10, y - 90], :width => width - 20, size: 10, align: :left
     text_box "Date  :", :at => [x +10, y - 100], :width => width - 20, size: 10, align: :left
     text_box "#{@box_request.user.business_unit}", :at => [x + 10, y - 130], :width => width - 20, size: 10, align: :center, style: :bold
 
     stroke_rectangle [x + 180, y], width, height
-    text_box "Received by:", :at => [x + 180, y - 10], :width => width - 20, size: 10, align: :center
+    text_box "Confirmed by:", :at => [x + 180, y - 10], :width => width - 20, size: 10, align: :center
     text_box "Name:", :at => [x +190, y - 90], :width => width - 20, size: 10, align: :left
     text_box "Date  :", :at => [x +190, y - 100], :width => width - 20, size: 10, align: :left
     text_box "Rakyat Niaga Sdn. Bhd.", :at => [x + 180 +10, y - 130], :width => width - 20, size: 10, align: :center, style: :bold
@@ -100,46 +97,6 @@ class BoxRequestAdminPdf < Prawn::Document
     text_box "Date          :", :at => [x + 370, y - 100], :width => width - 20, size: 10, align: :left
     text_box "Vehicle#    :", :at => [x + 370, y - 110], :width => width - 20, size: 10, align: :left
     text_box "Company:", :at => [x + 360 + 10, y - 130], :width => width - 20, size: 10, align: :left
-  end
-
-  def sub_1
-    stroke do
-      horizontal_line 0, 550, :at => 390
-      draw_text "Retrieval", :at => [240, 400], size: 14, style: :bold
-    end
-  end
-
-  def box_return
-    width = 180
-    height = 120
-
-    x = 5
-    y = 180
-
-    stroke_rectangle [x, y], width, height
-    text_box "Confirmed by:", :at => [x +10, y - 10], :width => width - 20, size: 10, align: :center
-    text_box "Name:", :at => [x +10, y - 90], :width => width - 20, size: 10, align: :left
-    text_box "Date  :", :at => [x +10, y - 100], :width => width - 20, size: 10, align: :left
-    text_box "#{@storage_request.user.business_unit}", :at => [x + 10, y - 130], :width => width - 20, size: 10, align: :center, style: :bold
-
-    stroke_rectangle [x + 180, y], width, height
-    text_box "Received by:", :at => [x + 180, y - 10], :width => width - 20, size: 10, align: :center
-    text_box "Name:", :at => [x +190, y - 90], :width => width - 20, size: 10, align: :left
-    text_box "Date  :", :at => [x +190, y - 100], :width => width - 20, size: 10, align: :left
-    text_box "Rakyat Niaga Sdn. Bhd.", :at => [x + 180 +10, y - 130], :width => width - 20, size: 10, align: :center, style: :bold
-
-    stroke_rectangle [x + 360, y], width, height
-    text_box "Transportation:", :at => [x + 360, y - 10], :width => width - 20, size: 10, align: :center
-    text_box "Name:", :at => [x + 370, y - 90], :width => width - 20, size: 10, align: :left
-    text_box "Date  :", :at => [x + 370, y - 100], :width => width - 20, size: 10, align: :left
-    text_box "Company:", :at => [x + 360 + 10, y - 130], :width => width - 20, size: 10, align: :left
-  end
-
-  def sub_2
-    stroke do
-      horizontal_line 0, 550, :at => 190
-      draw_text "Return", :at => [240, 200], size: 14, style: :bold
-    end
   end
 
   def kaki
