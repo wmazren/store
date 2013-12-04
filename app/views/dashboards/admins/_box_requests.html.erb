@@ -18,6 +18,7 @@
             <table class="table table-bordered table-striped">
               <thead><tr>
                 <th>Request Date</th>
+                <th>Business Unit</th>
                 <th>Box Quantity</th>
                 <th>Status</th>
                 <th class="td-actions">Action</th>
@@ -27,10 +28,12 @@
                 <% @box_requests_open_admin.each do |box_requests_open_admin| %>
                   <tr>
                     <td><%= box_requests_open_admin.created_at.strftime("%d %b, %Y") %></td>
+                    <td><%= box_requests_open_admin.user.business_unit %></td>
                     <td><%= box_requests_open_admin.quantity %></td>
                     <td><%= box_requests_open_admin.state %></td>
                     <td class="td-actions">
                       <%= link_to "Edit", edit_box_request_path(box_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
+                      <%= link_to "Print", box_request_path(box_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
                   </tr>
                 <% end %>
               </tbody>

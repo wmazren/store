@@ -5,6 +5,19 @@ class BoxRequestsController < ApplicationController
   def index
   end
 
+  def show
+        @box_request = BoxRequest.find(params[:id])
+        respond_to do |format|
+          format.html
+          format.pdf do
+              pdf = BoxRequestAdminPdf.new(@box_request, view_context)
+              send_data pdf.render, filename: "box_request_#{@box_request.user.full_name}.pdf",
+                                    type: "application/pdf",
+                                    disposition: "inline"
+          end
+        end
+      end
+
   def new
     @box_request = BoxRequest.new
   end
