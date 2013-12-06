@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def active_for_authentication?
-    super && self.active
-  end
+  #def active_for_authentication?
+    #super && self.active
+  #end
 end
