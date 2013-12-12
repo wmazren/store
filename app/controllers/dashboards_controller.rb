@@ -13,7 +13,8 @@ class DashboardsController < ApplicationController
     #Admin
     @storage_requests_open_admin= StorageRequest.where(['submit_state <> ? AND state <> ?', 'draft', 'closed'])
     @storage_requests_new_admin= StorageRequest.where(['submit_state <> ? AND state = ?', 'draft', 'new'])
-    @storage_requests_in_progress_admin= StorageRequest.where(['submit_state <> ? AND state = ?', 'draft', 'in progress'])
+    # @storage_requests_in_progress_admin= StorageRequest.where(['submit_state <> ? AND state = ?', 'draft', 'in progress'])
+    @storage_requests_in_progress_admin= StorageRequest.where(['submit_state <> ? AND state <> ?', 'draft', 'new'])
 
     @retrieval_requests_open_admin = RetrievalRequest.where(['state <> ?', 'closed'])
     @retrieval_requests_new_admin= RetrievalRequest.where(['state = ?', 'new'])
