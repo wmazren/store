@@ -1,4 +1,6 @@
 class BoxRequest < ActiveRecord::Base
+  has_paper_trail
+
   belongs_to :user
 
   attr_accessible :quantity, :user_id, :state
