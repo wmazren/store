@@ -1,5 +1,4 @@
 class Warehouse < ActiveRecord::Base
-
   has_many :storage_requests
 
   has_many :floors

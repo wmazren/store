@@ -44,4 +44,11 @@ class WarehousesController < ApplicationController
       format.html { render action: "new" }
     end
   end
+
+  def destroy
+    @warehouse = Warehouse.find(params[:id])
+    @warehouse.destroy
+    flash[:notice] = "Successfully destroyed warehouse."
+    redirect_to dashboards_url
+  end
 end
