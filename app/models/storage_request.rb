@@ -2,7 +2,7 @@ class StorageRequest < ActiveRecord::Base
   has_paper_trail
 
   belongs_to :user
-  has_many :packages, :inverse_of => :storage_request
+  has_many :packages, :inverse_of => :storage_request, :dependent => :destroy
 
   belongs_to :warehouse
 

@@ -13,6 +13,7 @@
           <p><b>Status: </b><span class="label label-warning"><%= @storage_request.state %></span></p>
           <%= render 'dashboards/users/alert' %>
           <%= link_to "Edit / Submit", edit_storage_request_path(@storage_request), :class => 'btn btn-primary' %>
+          <%= link_to 'Delete', @storage_request, :data => { :confirm => 'Are you sure?' }, method: :delete, :class => 'btn btn-danger' %>
         <% else %>
           <p><b>Status: </b><%= @storage_request.state %></p>
           <p><%= link_to "Printable (PDF)", storage_request_path(@storage_request, format: "pdf"), :class => 'btn btn-mini btn-primary' %></p>

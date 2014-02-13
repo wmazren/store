@@ -2,7 +2,7 @@ class Package < ActiveRecord::Base
   belongs_to :user
   belongs_to :storage_request, :inverse_of => :packages
   has_many :retrieval_requests
-  has_many :items, :inverse_of => :package
+  has_many :items, :inverse_of => :package, :dependent => :destroy
   has_one :slot
 
   after_create :assign_barcode
