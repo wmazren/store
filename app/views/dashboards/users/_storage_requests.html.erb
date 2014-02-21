@@ -28,6 +28,7 @@
                     <td><%= pluralize(storage_requests_open.packages.size, "Box") %></td>
                     <td class="td-actions">
                       <%= link_to "Edit / Submit", edit_storage_request_path(storage_requests_open), :class => 'btn btn-mini btn-primary' %>
+                      <%= link_to 'Delete', storage_requests_open, :data => { :confirm => 'Are you sure?' }, method: :delete, :class => 'btn btn-mini btn-danger' %>
                     </td>
                   </tr>
                 <% end %>
