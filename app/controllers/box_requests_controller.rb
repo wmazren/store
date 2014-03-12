@@ -40,6 +40,7 @@ class BoxRequestsController < ApplicationController
       redirect_to dashboards_path
     else
       render :action => 'edit'
+      flash[:error] = "Insufficient stocks for boxes. Please check inventory!"
     end
   end
 end

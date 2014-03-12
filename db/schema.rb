@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029120838) do
+ActiveRecord::Schema.define(:version => 20140312154903) do
 
   create_table "bays", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(:version => 20131029120838) do
   end
 
   add_index "box_requests", ["user_id"], :name => "index_box_requests_on_user_id"
+
+  create_table "box_stocks", :force => true do |t|
+    t.string   "state"
+    t.integer  "box_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "box_stocks", ["box_id"], :name => "index_box_stocks_on_box_id"
+
+  create_table "boxes", :force => true do |t|
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "floors", :force => true do |t|
     t.string   "name"
@@ -104,6 +119,17 @@ ActiveRecord::Schema.define(:version => 20131029120838) do
   add_index "slots", ["level_id"], :name => "index_slots_on_level_id"
   add_index "slots", ["package_id"], :name => "index_slots_on_package_id"
   add_index "slots", ["warehouse_id"], :name => "index_slots_on_warehouse_id"
+
+  create_table "stocks", :force => true do |t|
+    t.integer  "box_id"
+    t.integer  "box_request_id"
+    t.string   "state"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "stocks", ["box_id"], :name => "index_stocks_on_box_id"
+  add_index "stocks", ["box_request_id"], :name => "index_stocks_on_box_request_id"
 
   create_table "storage_requests", :force => true do |t|
     t.integer  "user_id"

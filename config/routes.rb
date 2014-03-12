@@ -7,6 +7,7 @@ Store::Application.routes.draw do
 
   resources :retrieval_requests
   resources :box_requests
+  resources :boxes
 
   resources :packages
 

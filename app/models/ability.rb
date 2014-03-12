@@ -12,6 +12,7 @@ class Ability
           can :manage, Package
           can :manage, Warehouse
           can :manage, BoxRequest
+          can :manage, Box
         end
 
         if user.role == "Admin"
@@ -22,6 +23,7 @@ class Ability
             can :manage, Package
             can :manage, Warehouse
             can :manage, BoxRequest
+            can :manage, Box
         end
 
         if user.role == "User"

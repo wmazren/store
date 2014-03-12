@@ -56,6 +56,22 @@
             <% if current_user.role != "User" %>
               <li class="dropdown">
                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-inbox"></i>
+                  <span>Inventory</span>
+                  <b class="caret"></b>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Boxes - Inventory", boxes_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Boxes - Add new stocks", new_box_path %></li>
+                </ul>
+              </li>
+            <% end %>
+
+            <% if current_user.role != "User" %>
+              <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="icon-list-alt"></i>
                   <span>Reports</span>
                   <b class="caret"></b>
