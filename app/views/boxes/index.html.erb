@@ -12,14 +12,22 @@
           <thead>
             <tr>
               <th>Date Added</th>
+              <th>Date Received</th>
               <th>Quantity</th>
+              <th>PO#</th>
+              <th>Invoice#</th>
+              <th>Supplier</th>
             </tr>
           </thead>
           <tbody>
             <% @boxes.each do |box| %>
             <tr>
               <td><%= box.created_at.strftime("%d %b, %Y") %></td>
+              <td><%= box.date_received %></td>
               <td><%= box.quantity %></td>
+              <td><%= box.po_num %></td>
+              <td><%= box.invoice_num %></td>
+              <td><%= box.supplier_name %></td>
             </tr>
             <% end %>
           </tbody>

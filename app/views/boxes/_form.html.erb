@@ -20,6 +20,10 @@
           <div class="tab-content">
             <div class="tab-pane active" id="add_box">
               <%= f.input :quantity, :as => :integer, :required => true, :autofocus => true %>
+              <%= f.input :po_num %>
+              <%= f.input :date_received %>
+              <%= f.input :invoice_num %>
+              <%= f.input :supplier_name %>
             </div>
           </div>
         </div>
