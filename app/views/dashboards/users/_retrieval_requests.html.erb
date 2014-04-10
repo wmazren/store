@@ -19,6 +19,7 @@
                 <th>Request Date</th>
                 <th>Box Name</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr></thead>
 
               <tbody>
@@ -27,6 +28,7 @@
                     <td><%= retrieval_requests_open.created_at.strftime("%d %b, %Y") %></td>
                     <td><%= retrieval_requests_open.package.name %></td>
                     <td><%= retrieval_requests_open.state %></td>
+                    <td><%= link_to "Return Box", edit_retrieval_request_path(retrieval_requests_open), :class => 'btn btn-mini btn-primary' %></td>
                   </tr>
                 <% end %>
               </tbody>
