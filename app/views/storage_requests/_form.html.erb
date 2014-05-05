@@ -57,23 +57,29 @@
                         <div id="<%= builder1.to_s.gsub(/[^0-9a-z ]/i, '') %>" class="accordion-body collapse">
                           <div class="well" style="background-color:transparent; border:none; margin-bottom:0px" >
                             <%= builder1.fields_for :items do |builder2| %>
-                              <div class="alert alert-info">
-                                <fieldset>
-                                  <%= builder2.input :name, :wrapper => :prepend, :label => false do %>
-                                    <%= builder2.hidden_field :user_id, :value => current_user.id %>
-                                    <%= content_tag :span, "Item Name", :class => "add-on" %>
-                                    <%= builder2.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %>
-                                    <%= builder2.hidden_field :_destroy %>
-                                    <%= link_to "remove", '#', class: "add-on remove_fields" %><br><br>
 
-                                    <%= content_tag :span, "Item Date", :class => "add-on" %>
-                                    <%= builder2.input_field :item_date, :class => "item-date", :style => "margin-right: 10px;"  %><br><br>
+                              <fieldset>
+                                  <div class="alert alert-info" style="padding-right:10px; padding-top:20px;">
 
-                                    <%= content_tag :span, "Item Type", :class => "add-on" %>
-                                    <%= builder2.input_field :item_type, :style => "text-transform:uppercase" %>
-                                  <% end %>
-                                </fieldset>
-                              </div>
+                                     <div class="span1" style="text-align:right; float:right; margin-top:-15px;">
+                                      <%= builder2.hidden_field :_destroy %>
+                                      <%= link_to "", '#', class: "icon-remove remove_fields", :title => "Remove Item" %>
+                                    </div>
+
+                                    <%= builder2.input :name, :wrapper => :prepend, :label => false do %>
+
+                                      <%= builder2.hidden_field :user_id, :value => current_user.id %>
+                                      <%= content_tag :span, "Item Name", :class => "add-on" %>
+                                      <%= builder2.input_field :name, :class => 'span8 item-textbox', :style => "text-transform:uppercase", :onkeypress => 'if(event.keyCode==13) { $(this).closest(".accordion-group").find(".add_items").click(); }' %><br><br>
+
+                                      <%= content_tag :span, "Item Date  ", :class => "add-on" %>
+                                      <%= builder2.text_field :item_date, :class => "item-date", :style => "margin-right: 10px;" %>
+                                      <%= content_tag :span, "Item Tag", :class => "add-on" %>
+                                      <%= builder2.input_field :item_type,  :style => "text-transform:uppercase" %>
+                                    <% end %>
+                                </div>
+                              </fieldset>
+
 
                             <% end %>
                           </div>

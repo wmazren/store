@@ -1,5 +1,7 @@
 jQuery ->
 
+ $('.item-date').datepicker({ dateFormat: 'dd-mm-yy' })
+
  $('form').on 'click', '.remove_fields', (event) ->
    $(this).prev('input[type=hidden]').val('1')
    # alert($(this).prev().attr("id"));

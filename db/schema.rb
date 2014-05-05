@@ -34,15 +34,6 @@ ActiveRecord::Schema.define(:version => 20140410060838) do
 
   add_index "box_requests", ["user_id"], :name => "index_box_requests_on_user_id"
 
-  create_table "box_stocks", :force => true do |t|
-    t.string   "state"
-    t.integer  "box_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "box_stocks", ["box_id"], :name => "index_box_stocks_on_box_id"
-
   create_table "boxes", :force => true do |t|
     t.integer  "quantity"
     t.datetime "created_at",    :null => false
