@@ -33,7 +33,7 @@
                     <td><%= box_requests_open_admin.state %></td>
                     <td class="td-actions">
                       <%= link_to "Edit", edit_box_request_path(box_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
-                      <%= link_to "Print", box_request_path(box_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
+                      <%= link_to "View", box_request_path(box_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
                   </tr>
                 <% end %>
               </tbody>

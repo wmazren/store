@@ -57,7 +57,7 @@
                     <td><%= pluralize(storage_requests_open.packages.size, "Box") %></td>
                     <td><%= storage_requests_open.state %></td>
                     <td class="td-actions">
-                      <%= link_to "Print", storage_request_path(storage_requests_open, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
+                      <%= link_to "View", storage_request_path(storage_requests_open, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
                     </td>
                   </tr>
                 <% end %>
