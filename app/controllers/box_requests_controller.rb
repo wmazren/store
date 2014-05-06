@@ -43,4 +43,11 @@ class BoxRequestsController < ApplicationController
       flash[:error] = "Insufficient stocks for boxes. Please check inventory!"
     end
   end
+
+  def destroy
+    @box_request = BoxRequest.find(params[:id])
+    @box_request .destroy
+    flash[:notice] = "Successfully deleted Box Request."
+    redirect_to dashboards_path
+  end
 end

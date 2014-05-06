@@ -40,4 +40,11 @@
           render :edit
         end
       end
+
+      def destroy
+        @retrieval_request = RetrievalRequest.find(params[:id])
+        @retrieval_request.destroy
+        flash[:notice] = "Successfully deleted Retrieval Request."
+        redirect_to dashboards_path
+      end
     end

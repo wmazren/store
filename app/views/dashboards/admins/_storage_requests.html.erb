@@ -35,6 +35,7 @@
                       <%= link_to "Edit", edit_storage_request_path(storage_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
                       <% if storage_requests_open_admin.warehouse_id != nil  %>
                         <%= link_to "View", storage_request_path(storage_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
+                        <%= link_to 'Delete', storage_requests_open_admin, :data => { :confirm => 'Are you sure?' }, method: :delete, :class => 'btn btn-mini btn-danger' %>
                       <% end %>
                     </td>
                   </tr>

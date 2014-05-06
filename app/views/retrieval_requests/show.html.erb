@@ -41,7 +41,8 @@
         <h3><%= @retrieval_request.package.name %></h3>
       </div> <!-- /widget-header -->
 
-      <div class="widget-content">
+      <% if current_user.role == "User" %>
+        <div class="widget-content">
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
@@ -54,8 +55,8 @@
               <% end %>
             </tbody>
           </table>
-
-      </div>
+        </div>
+      <% end %>
     </div>
   </div> <!-- /span-8 -->
 </div> <!-- /row -->
