@@ -21,10 +21,10 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id="account_details">
-              <%= f.input :full_name, :required => true, :autofocus => true %>
+              <%= f.input :full_name, :required => true, :disabled => true %>
               <%= f.input :username, :disabled => true %>
               <%= f.input :email, :disabled => true %>
-              <%= f.input :position, :required => true %>
+              <%= f.input :position, :required => true, :disabled => true %>
               <% if current_user.role == "Super User" %>
                 <%= f.input :role, :collection => [ "Super User", "Admin", "User" ] %>
               <% end %>
@@ -37,17 +37,17 @@
             </div>
 
             <div class="tab-pane" id="address">
-              <%= f.input :business_unit, :required => true %>
-              <%= f.input :address1, :required => true %>
-              <%= f.input :address2, :required => true %>
-              <%= f.input :town, :required => true %>
-              <%= f.input :postcode, :required => true %>
-              <%= f.input :state, :required => true %>
-              <%= f.input :phone1, :required => true %>
-              <%= f.input :phone2, :required => true %>
-              <%= f.input :phone3, :required => true %>
-              <%= f.input :fax, :required => true %>
-              <%= f.input :mobile, :required => true %>
+              <%= f.input :business_unit, :disabled => true %>
+              <%= f.input :address1, :disabled => true %>
+              <%= f.input :address2, :disabled => true %>
+              <%= f.input :town, :disabled => true %>
+              <%= f.input :postcode, :disabled => true %>
+              <%= f.input :state, :disabled => true %>
+              <%= f.input :phone1, :disabled => true %>
+              <%= f.input :phone2, :disabled => true %>
+              <%= f.input :phone3, :disabled => true %>
+              <%= f.input :fax, :disabled => true %>
+              <%= f.input :mobile, :disabled => true %>
             </div>
 
             <div class="tab-pane" id="password">
