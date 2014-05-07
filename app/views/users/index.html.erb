@@ -48,7 +48,7 @@
                       <tr>
                         <td><%= link_to user.full_name, user %></td>
                         <td><%= user.username %></td>
-                        <td><%= user.email %></td>
+                        <td><a href=mailto:<%=user.email %>><%= user.email %></td>
                         <td><%= user.business_unit %></td>
                         <td class="td-actions">
                           <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
@@ -59,7 +59,7 @@
                     <tr>
                       <td><%= link_to user.full_name, user %></td>
                       <td><%= user.username %></td>
-                      <td><%= user.email %></td>
+                      <td><a href=mailto:<%=user.email %>><%= user.email %></td>
                       <td><%= user.business_unit %></td>
                       <td class="td-actions">
                         <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
@@ -87,7 +87,7 @@
                     <tr>
                       <td><%= link_to user.full_name, user %></td>
                       <td><%= user.username %></td>
-                      <td><%= user.email %></td>
+                      <td><a href=mailto:<%=user.email %>><%= user.email %></td>
                       <td><%= user.business_unit %></td>
                       <td class="td-actions">
                         <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
@@ -114,7 +114,7 @@
                     <tr>
                       <td><%= link_to user.full_name, user %></td>
                       <td><%= user.username %></td>
-                      <td><%= user.email %></td>
+                      <td><a href=mailto:<%=user.email %>><%= user.email %></td>
                       <td><%= user.business_unit %></td>
                       <td class="td-actions">
                         <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
@@ -143,7 +143,7 @@
                       <tr>
                         <td><%= link_to user.full_name, user %></td>
                         <td><%= user.username %></td>
-                        <td><%= user.email %></td>
+                        <td><a href=mailto:<%=user.email %>><%= user.email %></td>
                         <td><%= user.business_unit %></td>
                         <td class="td-actions">
                           <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
@@ -154,7 +154,7 @@
                     <tr>
                       <td><%= link_to user.full_name, user %></td>
                       <td><%= user.username %></td>
-                      <td><%= user.email %></td>
+                      <td><a href=mailto:<%=user.email %>><%= user.email %></td>
                       <td><%= user.business_unit %></td>
                       <td class="td-actions">
                         <%= link_to "Edit", edit_user_path(user), :class => 'btn btn-mini' %>
