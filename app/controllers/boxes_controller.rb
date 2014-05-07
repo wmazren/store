@@ -3,6 +3,8 @@ class BoxesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @boxes = Box.all
+    @stocks = Stock.where(['state = ?', 'available']).count
   end
 
   def new

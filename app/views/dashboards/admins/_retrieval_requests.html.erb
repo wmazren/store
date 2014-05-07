@@ -32,6 +32,7 @@
                     <td class="td-actions">
                       <%= link_to "Edit", edit_retrieval_request_path(retrieval_requests_open_admin), :class => 'btn btn-mini btn-primary' %>
                       <%= link_to "View", retrieval_request_path(retrieval_requests_open_admin, format: "pdf"), :class => 'btn btn-mini btn-primary' %>
+                      <%= link_to 'Delete', retrieval_requests_open_admin, :data => { :confirm => 'Are you sure?' }, method: :delete, :class => 'btn btn-mini btn-danger' %>
                     </td>
                   </tr>
                 <% end %>

@@ -79,6 +79,6 @@ class StorageRequestsController < ApplicationController
   def destroy
     @storage_request = StorageRequest.find(params[:id])
     @storage_request.destroy
-    redirect_to storage_requests_url, notice: "Successfully destroyed storage request."
+    redirect_to storage_requests_url, notice: "Successfully deleted Storage Request."
   end
 end
