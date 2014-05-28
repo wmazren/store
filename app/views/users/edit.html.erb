@@ -21,10 +21,17 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id="account_details">
-              <%= f.input :full_name, :required => true, :disabled => true %>
-              <%= f.input :username, :disabled => true %>
-              <%= f.input :email, :disabled => true %>
-              <%= f.input :position, :required => true, :disabled => true %>
+              <% if current_user.role != "User" %>
+                <%= f.input :full_name, :required => true %>
+                <%= f.input :username %>
+                <%= f.input :email %>
+                <%= f.input :position, :required => true %>
+              <%  else %>
+                <%= f.input :full_name, :required => true, :disabled => true %>
+                <%= f.input :username, :disabled => true %>
+                <%= f.input :email, :disabled => true %>
+                <%= f.input :position, :required => true, :disabled => true %>
+              <% end %>
               <% if current_user.role == "Super User" %>
                 <%= f.input :role, :collection => [ "Super User", "Admin", "User" ] %>
               <% end %>
@@ -37,17 +44,31 @@
             </div>
 
             <div class="tab-pane" id="address">
-              <%= f.input :business_unit, :disabled => true %>
-              <%= f.input :address1, :disabled => true %>
-              <%= f.input :address2, :disabled => true %>
-              <%= f.input :town, :disabled => true %>
-              <%= f.input :postcode, :disabled => true %>
-              <%= f.input :state, :disabled => true %>
-              <%= f.input :phone1, :disabled => true %>
-              <%= f.input :phone2, :disabled => true %>
-              <%= f.input :phone3, :disabled => true %>
-              <%= f.input :fax, :disabled => true %>
-              <%= f.input :mobile, :disabled => true %>
+              <% if current_user.role != "User" %>
+                <%= f.input :business_unit %>
+                <%= f.input :address1 %>
+                <%= f.input :address2 %>
+                <%= f.input :town %>
+                <%= f.input :postcode %>
+                <%= f.input :state %>
+                <%= f.input :phone1 %>
+                <%= f.input :phone2 %>
+                <%= f.input :phone3 %>
+                <%= f.input :fax %>
+                <%= f.input :mobile %>
+              <%  else %>
+                <%= f.input :business_unit, :disabled => true %>
+                <%= f.input :address1, :disabled => true %>
+                <%= f.input :address2, :disabled => true %>
+                <%= f.input :town, :disabled => true %>
+                <%= f.input :postcode, :disabled => true %>
+                <%= f.input :state, :disabled => true %>
+                <%= f.input :phone1, :disabled => true %>
+                <%= f.input :phone2, :disabled => true %>
+                <%= f.input :phone3, :disabled => true %>
+                <%= f.input :fax, :disabled => true %>
+                <%= f.input :mobile, :disabled => true %>
+              <% end %>
             </div>
 
             <div class="tab-pane" id="password">
